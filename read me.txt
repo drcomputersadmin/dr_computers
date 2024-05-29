@@ -1,0 +1,25 @@
+THANKS FOR DOWNLOADING THE PROJECT:
+
+HOW TO INSTALL THE PROJECT:
+
+After extracting the project folder,
+
+create a Database name any name you want, then 
+
+Import the database file in dbbackup folder named inventory.sql
+
+Then Open database file in location:
+
+project\application\config\database.php
+
+Then edit the following with your data
+
+'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'test11',
+	'dbdriver' => 'mysqli',
+
+Then, go to web browser and access your project:
+
+There you go: for any question, please email us: info@j1hostsolution.com
