@@ -87,3 +87,8 @@ ERROR - 2024-05-29 16:29:52 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-05-29 16:29:52 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-05-29 16:29:52 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-05-29 16:29:52 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-05-29 16:32:02 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-05-29 16:32:02 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-05-29 16:32:02 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-05-29 16:32:02 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-05-29 16:32:02 --> 404 Page Not Found: Theme/sound
