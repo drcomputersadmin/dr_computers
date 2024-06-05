@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sales_model extends CI_Model {
+class Sales_quote_model extends CI_Model {
 
 	//Datatable start
-	var $table = 'db_sales as a';
-	var $column_order = array( 'a.return_bit','a.id','a.sales_date','a.sales_code','a.reference_no','a.grand_total','a.payment_status','a.created_by','b.customer_name','a.paid_amount','a.sales_status','a.pos'); //set column field database for datatable orderable
+	var $table = 'db_sales_quote as a';
+	var $column_order = array( 'a.return_bit','a.id','a.sales_date','a.sales_code','a.reference_no','a.grand_total','a.payment_status','a.transferred_to_invoice ','a.created_by','b.customer_name','a.paid_amount','a.sales_status','a.pos'); //set column field database for datatable orderable
 	var $column_search = array('sales_due','a.return_bit','a.id','a.sales_date','a.sales_code','a.reference_no','a.grand_total','a.payment_status','a.created_by','b.customer_name','a.paid_amount','a.sales_status','a.pos'); //set column field database for datatable searchable 
 	var $order = array('a.id' => 'desc'); // default order  
 
@@ -116,7 +116,7 @@ class Sales_model extends CI_Model {
 		return $this->security->xss_clean(html_escape($input));
 	}
 
-	//Save Sales
+	//Save Sales quotes
 	public function verify_save_and_update(){
 		//Filtering XSS and html escape from user inputs 
 		extract($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));
@@ -138,10 +138,10 @@ class Sales_model extends CI_Model {
 			$q5=$this->db->query($qs5);
 			$sales_init=$q5->row()->sales_init;
 
-			$this->db->query("ALTER TABLE db_sales AUTO_INCREMENT = 1");
-			$q4=$this->db->query("select coalesce(max(id),0)+1 as maxid from db_sales");
+			$this->db->query("ALTER TABLE db_sales_quote AUTO_INCREMENT = 1");
+			$q4=$this->db->query("select coalesce(max(id),0)+1 as maxid from db_sales_quote");
 			$maxid=$q4->row()->maxid;
-			$sales_code=$sales_init.str_pad($maxid, 4, '0', STR_PAD_LEFT);
+			$sales_code="QT".str_pad($maxid, 4, '0', STR_PAD_LEFT);
 
 		    $sales_entry = array(
 		    				'sales_code' 				=> $sales_code, 
@@ -172,7 +172,7 @@ class Sales_model extends CI_Model {
 		    				'status' 					=> 1,
 		    			);
 
-			$q1 = $this->db->insert('db_sales', $sales_entry);
+			$q1 = $this->db->insert('db_sales_quote', $sales_entry);
 			$sales_id = $this->db->insert_id();
 		}
 		else if($command=='update'){	
@@ -197,9 +197,9 @@ class Sales_model extends CI_Model {
 		    				'sales_note' 			=> $sales_note,
 		    			);
 					
-			$q1 = $this->db->where('id',$sales_id)->update('db_sales', $sales_entry);
+			$q1 = $this->db->where('id',$sales_id)->update('db_sales_quote', $sales_entry);
 
-			$q11=$this->db->query("delete from db_salesitems where sales_id='$sales_id'");
+			$q11=$this->db->query("delete from db_quoteitems where sales_id='$sales_id'");
 			if(!$q11){
 				return "failed";
 			}
@@ -268,14 +268,9 @@ class Sales_model extends CI_Model {
 
 		    			);
 				
-				$q2 = $this->db->insert('db_salesitems', $salesitems_entry);
+				$q2 = $this->db->insert('db_quoteitems', $salesitems_entry);
 				
-				//UPDATE itemS QUANTITY IN itemS TABLE
-				$this->load->model('pos_model');				
-				$q6=$this->pos_model->update_items_quantity($item_id);
-				if(!$q6){
-					return "failed";
-				}
+				
 				
 			}
 		
@@ -301,25 +296,7 @@ class Sales_model extends CI_Model {
 			if($q3!=1){
 				return "failed";
 			}
-			/*$salespayment_id=$this->db->insert_id();
-			$customer_payment = array(
-	    								'salespayment_id' 	=> $salespayment_id,
-	    								'customer_id' 		=> $customer_id,
-	    								'payment_date' 		=> date("Y-m-d",strtotime($sales_date)),
-	    								'payment_type' 		=> $payment_type,
-	    								'payment' 			=> $amount,
-	    								'payment_note' 		=> $payment_note,
-	    								'created_date' 		=> $CUR_DATE,
-					    				'created_time' 		=> $CUR_TIME,
-					    				'created_by' 		=> $CUR_USERNAME,
-					    				'system_ip' 		=> $SYSTEM_IP,
-					    				'system_name' 		=> $SYSTEM_NAME,
-					    				'status' 			=> 1,
-	    							);
-	    	$q1=$this->db->insert("db_customer_payments",$customer_payment);
-	    	if(!$q1){
-	    		return "failed";
-	    	}*/
+		
 
 		}
 		
@@ -407,7 +384,7 @@ class Sales_model extends CI_Model {
 	//Get sales_details
 	public function get_details($id,$data){
 		//Validate This sales already exist or not
-		$query=$this->db->query("select * from db_sales where upper(id)=upper('$id')");
+		$query=$this->db->query("select * from db_sales_quote where upper(id)=upper('$id')");
 		if($query->num_rows()==0){
 			show_404();exit;
 		}
@@ -462,7 +439,7 @@ class Sales_model extends CI_Model {
 	}*/
 	public function update_status($id,$status){
 		
-        $query1="update db_sales set status='$status' where id=$id";
+        $query1="update db_sales_quote set status='$status' where id=$id";
         if ($this->db->simple_query($query1)){
             echo "success";
         }
@@ -470,11 +447,11 @@ class Sales_model extends CI_Model {
             echo "failed";
         }
 	}
-	public function delete_sales($ids){
+	public function delete_sales_quote($ids){
       	$this->db->trans_begin();
       	//Find the customer id in one aray
-      	$q11 = $this->db->select("customer_id,id")->where("id in ($ids)")->get("db_sales");
-      	$q6 = $this->db->select("item_id")->from("db_salesitems")->where("sales_id in ($ids)")->get();
+      	$q11 = $this->db->select("customer_id,id")->where("id in ($ids)")->get("db_sales_quote");
+      	$q6 = $this->db->select("item_id")->from("db_quoteitems")->where("sales_id in ($ids)")->get();
 
 
       	$q12=$this->db->select("*")->where("sales_id in ($ids)")->get("db_salesreturn");
@@ -489,7 +466,7 @@ class Sales_model extends CI_Model {
       	
       	$q5=$this->db->query("delete from db_salespayments where sales_id in($ids)");
 		$q7=$this->db->query("delete from db_salesitems where sales_id in($ids)");
-		$q3=$this->db->query("delete from db_sales where id in($ids)");
+		$q3=$this->db->query("delete from db_sales_quote where id in($ids)");
 
 		//$q6=$this->db->query("select id from db_items");
 		
@@ -696,7 +673,7 @@ class Sales_model extends CI_Model {
         $this->db->trans_begin();
 		$sales_id = $this->db->query("select sales_id from db_salespayments where id=$payment_id")->row()->sales_id;
 
-		$customer_id = $this->db->query("select customer_id from db_sales where id=$sales_id")->row()->customer_id;
+		$customer_id = $this->db->query("select customer_id from db_sales_quote where id=$sales_id")->row()->customer_id;
 
 		$q1=$this->db->query("delete from db_salespayments where id='$payment_id'");
 		$q2=$this->update_sales_payment_status($sales_id,$customer_id);
@@ -712,7 +689,7 @@ class Sales_model extends CI_Model {
 	}
 
 	public function show_pay_now_modal($sales_id){
-		$q1=$this->db->query("select * from db_sales where id=$sales_id");
+		$q1=$this->db->query("select * from db_sales_quote where id=$sales_id");
 		$res1=$q1->row();
 		$customer_id = $res1->customer_id;
 		$q2=$this->db->query("select * from db_customers where id=$customer_id");
@@ -894,7 +871,7 @@ class Sales_model extends CI_Model {
 			return "Please Enter Valid Amount!";
 		}
 		
-		$customer_id = $this->db->query("select customer_id from db_sales where id=$sales_id")->row()->customer_id;
+		$customer_id = $this->db->query("select customer_id from db_sales_quote where id=$sales_id")->row()->customer_id;
 		$q10=$this->update_sales_payment_status($sales_id,$customer_id);
 		if($q10!=1){
 			return "failed";
@@ -904,7 +881,7 @@ class Sales_model extends CI_Model {
 	}
 	
 	public function view_payments_modal($sales_id){
-		$q1=$this->db->query("select * from db_sales where id=$sales_id");
+		$q1=$this->db->query("select * from db_sales_quote where id=$sales_id");
 		$res1=$q1->row();
 		$customer_id = $res1->customer_id;
 		$q2=$this->db->query("select * from db_customers where id=$customer_id");
@@ -1046,8 +1023,10 @@ class Sales_model extends CI_Model {
 		</div>
 		<?php
 	}
+
+
 	//convert quote to invoice
-	public function convert_to_delivery_note($sales_id) {
+	public function convert_to_invoice($quotation_id) {
         // Start transaction
 		$query =$this->db->select('site_name,version,language_id,timezone,time_format,date_format')->where('id',1)->get('db_sitesettings');
 		date_default_timezone_set(trim($query->row()->timezone));
@@ -1057,25 +1036,29 @@ class Sales_model extends CI_Model {
 
         try {
             // Fetch the quotation details
-            $sale = $this->db->get_where('db_sales', ['id' => $sales_id])->row();
-            $customer=$this->db->get_where('db_customers', ['id' => $sale->customer_id])->row();
-            if (!$sale) {
-                throw new Exception('Invoice not found');
+            $quotation = $this->db->get_where('db_sales_quote', ['id' => $quotation_id])->row();
+            
+            if (!$quotation) {
+                throw new Exception('Quotation not found');
             }
 
-            // Prepare the delivery_note data from the invoice data
-            $delivery_note_data = [
-                'delivery_code'            => $this->generate_delivery_code(),
-                'reference_no'          => $sale->reference_no,
-                'delivery_date'            => date('Y-m-d'),
-                'sales_id'          => $sales_id,
-                'customer_id'           => $sale->customer_id,
-                'warehouse_id'    =>'0',
-               'delivery_status'=>'Delivered',
-                'delivery_address'            => $customer->address,
-				'contact_person'       =>$customer->address,
-				'contact_phone'       =>$customer->phone,
-				'delivery_note'  => " ",
+            // Prepare the invoice data from the quotation data
+            $invoice_data = [
+                'sales_code'            => $this->generate_sales_code(),
+                'reference_no'          => $quotation->reference_no,
+                'sales_date'            => date('Y-m-d'),
+                'sales_status'          => 'Final',
+                'customer_id'           => $quotation->customer_id,
+                'other_charges_input'   => $quotation->other_charges_input,
+                'other_charges_tax_id'  => $quotation->other_charges_tax_id,
+                'other_charges_amt'     => $quotation->other_charges_amt,
+                'discount_to_all_input' => $quotation->discount_to_all_input,
+                'discount_to_all_type'  => $quotation->discount_to_all_type,
+                'tot_discount_to_all_amt' => $quotation->tot_discount_to_all_amt,
+                'subtotal'              => $quotation->subtotal,
+                'round_off'             => $quotation->round_off,
+                'grand_total'           => $quotation->grand_total,
+                'sales_note'            => $quotation->sales_note,
                 'created_date'          => date('Y-m-d'),
                 'created_time'          => $time_format,
                 'created_by'            => $this->session->userdata('inv_username'),
@@ -1087,27 +1070,27 @@ class Sales_model extends CI_Model {
 				// 'system_ip' 		=> $SYSTEM_IP,
 				// 'system_name' 		=> $SYSTEM_NAME,
                 'status'                => 1,
-				
+				'sale_origin'           =>'quotation',
              ];
 
             // Insert the invoice data into the invoices table
-            $this->db->insert('db_delivery_notes', $delivery_note_data);
+            $this->db->insert('db_sales', $invoice_data);
             $invoice_id = $this->db->insert_id();
 
-			$this->db->where('id', $sales_id);
-			$this->db->update('db_sales', ['transferred_to_delivery_note' => 1]);
+			$this->db->where('id', $quotation_id);
+			$this->db->update('db_sales_quote', ['transferred_to_invoice' => 1]);
 
-            // Fetch sales_items items
-            $sale_items = $this->db->get_where('db_salesitems', ['sales_id' => $sales_id])->result();
+            // Fetch quotation items
+            $quotation_items = $this->db->get_where('db_quoteitems', ['sales_id' => $quotation_id])->result();
 
             // Insert the quotation items as invoice items
-            foreach ($sale_items as $item) {
+            foreach ($quotation_items as $item) {
                 $invoice_item_data = [
-                    'delivery_note_id'         => $invoice_id,
-                  
+                    'sales_id'         => $invoice_id,
+                    'sales_status'     => 'Final',
                     'item_id'          => $item->item_id,
                     'description'      => $item->description,
-                    'delivery_qty'        => $item->sales_qty,
+                    'sales_qty'        => $item->sales_qty,
                     'price_per_unit'   => $item->price_per_unit,
                     'tax_type'         => $item->tax_type,
                     'tax_id'           => $item->tax_id,
@@ -1118,11 +1101,15 @@ class Sales_model extends CI_Model {
                     'unit_total_cost'  => $item->unit_total_cost,
                     'total_cost'       => $item->total_cost,
                     'purchase_price'   => $item->purchase_price,
-                    'delivery_status'           => 'delivered',
+                    'status'           => 1,
                 ];
                 
-                $this->db->insert('db_delivery_note_items', $invoice_item_data);
-			
+                $this->db->insert('db_salesitems', $invoice_item_data);
+				$this->load->model('pos_model');				
+				$q6=$this->pos_model->update_items_quantity($item->item_id);
+				if(!$q6){
+					return "failed";
+				}
 				
             }
 			
@@ -1130,10 +1117,10 @@ class Sales_model extends CI_Model {
             // Commit the transaction
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
-                return ['status' => 'error', 'message' => 'Failed to convert Invoice to Delivery.'];
+                return ['status' => 'error', 'message' => 'Failed to convert Quotation to Invoice.'];
             } else {
                 $this->db->trans_commit();
-                return ['status' => 'success', 'message' => 'Invoice has been successfully converted to Delivery Note.'];
+                return ['status' => 'success', 'message' => 'Quotation has been successfully converted to Invoice.'];
             }
         } catch (Exception $e) {
             // Rollback the transaction in case of error
@@ -1142,7 +1129,7 @@ class Sales_model extends CI_Model {
         }
     }
 
-    private function generate_delivery_code() {
+    private function generate_sales_code() {
         // Generate a unique sales code
         $sales_init = $this->db->select('sales_init')->get('db_company')->row()->sales_init;
         $max_id = $this->db->select_max('id')->get('db_sales')->row()->id + 1;

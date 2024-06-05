@@ -165,7 +165,7 @@
 		
 		<!--<li class="header">SALES</li>-->
     <?php if($CI->permissions('sales_add')  || $CI->permissions('sales_view') || $CI->permissions('sales_return_view') || $CI->permissions('sales_return_add')) { ?>
-		<li class="pos-active-li sales-list-active-li sales-active-li sales-return-active-li sales-return-list-active-li treeview">
+		<li class="pos-active-li sales-quote-active-li sales-quote-list-active-li   sales-delivery-list-active-li sales-list-active-li sales-active-li sales-return-active-li sales-return-list-active-li treeview">
           <a href="#">
             <i class=" fa fa-shopping-cart text-aqua"></i> <span><?= $this->lang->line('sales'); ?></span>
             <span class="pull-right-container">
@@ -176,11 +176,11 @@
         <?php if($CI->permissions('sales_add')) { ?>
        <!-- <li class="pos-active-li"><a href="<?php echo $base_url; ?>pos"><i class="fa fa-calculator "></i> <span>POS</span></a></li> -->
 
-		    <li class="sales-active-li"><a href="<?php echo $base_url; ?>sales/add"><i class="fa fa-plus-square-o "></i> <span><?= $this->lang->line('new_sales'); ?></span></a></li>
+		    <li class="sales-quote-active-li"><a href="<?php echo $base_url; ?>sales/addQuotation"><i class="fa fa-plus-square-o "></i> <span><?= $this->lang->line('new_sales'); ?></span></a></li>
         <?php } ?>
         
         <?php if($CI->permissions('sales_view')) { ?>
-        <li class="sales-list-active-li"><a href="<?php echo $base_url; ?>sales"><i class="fa fa-list "></i> <span><?= $this->lang->line('sales_list'); ?></span></a></li>
+        <li class="sales-quote-list-active-li"><a href="<?php echo $base_url; ?>sales/viewQuotation"><i class="fa fa-list "></i> <span><?= $this->lang->line('sales_list'); ?></span></a></li>
         <?php } ?>
         <?php if($CI->permissions('sales_add')) { ?>
        <!-- <li class="pos-active-li"><a href="<?php echo $base_url; ?>pos"><i class="fa fa-calculator "></i> <span>POS</span></a></li> -->
@@ -190,6 +190,11 @@
         
         <?php if($CI->permissions('sales_view')) { ?>
         <li class="sales-list-active-li"><a href="<?php echo $base_url; ?>sales"><i class="fa fa-list "></i> <span><?= $this->lang->line('invoice_list'); ?></span></a></li>
+        <?php } ?>
+       
+        
+        <?php if($CI->permissions('sales_view')) { ?>
+        <li class="sales-delivery-list-active-li"><a href="<?php echo $base_url; ?>sales/viewDelivery"><i class="fa fa-list "></i> <span><?= $this->lang->line('delivery_list'); ?></span></a></li>
         <?php } ?>
 
         <?php if($CI->permissions('sales_return_add')) { ?>

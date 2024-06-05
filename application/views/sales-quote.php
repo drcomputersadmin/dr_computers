@@ -71,7 +71,7 @@ padding-right: 2px;
     <section class="content-header">
          <h1>
             <?=$page_title;?>
-            <small>Add/Update Sales</small>
+            <small>Add/Update Quotation</small>
          </h1>
          <ol class="breadcrumb">
             <li><a href="<?php echo $base_url; ?>dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -95,7 +95,7 @@ padding-right: 2px;
                         
                         <!-- form start -->
                          <!-- OK START -->
-                        <?= form_open('#', array('class' => 'form-horizontal', 'id' => 'sales-form', 'enctype'=>'multipart/form-data', 'method'=>'POST'));?>
+                        <?= form_open('#', array('class' => 'form-horizontal', 'id' => 'sales-quote-form', 'enctype'=>'multipart/form-data', 'method'=>'POST'));?>
                            <input type="hidden" id="base_url" value="<?php echo $base_url;; ?>">
                            <input type="hidden" value='1' id="hidden_rowcount" name="hidden_rowcount">
                            <input type="hidden" value='0' id="hidden_update_rowid" name="hidden_update_rowid">
@@ -156,7 +156,8 @@ padding-right: 2px;
                                        </select>
                                     <span id="sales_status_msg" style="display:none" class="text-danger"></span>
                                  </div> -->
-                                 <input type="hidden" id="sales_status" name="sales_status" value="Final">
+                                 <input type="hidden" id="sales_status" name="sales_status" value="Quotation">
+
                                  <label for="reference_no" class="col-sm-2 control-label"><?= $this->lang->line('reference_no'); ?> </label>
                                  <div class="col-sm-3">
                                     <input type="text" value="<?php echo  $reference_no; ?>" class="form-control " id="reference_no" name="reference_no" placeholder="" >
@@ -511,7 +512,7 @@ padding-right: 2px;
 </div>
 <!-- ./wrapper -->
 
-      <script src="<?php echo $theme_link; ?>js/sales.js"></script>  
+      <script src="<?php echo $theme_link; ?>js/sales_quote.js"></script>  
       <script>
         
          //Initialize Select2 Elements

@@ -86,7 +86,7 @@ $('#save,#update').on("click",function (e) {
     
 			//if(confirm("Do You Wants to Save Record ?")){
 				e.preventDefault();
-				data = new FormData($('#sales-form')[0]);//form name
+				data = new FormData($('#sales-quote-form')[0]);//form name
         /*Check XSS Code*/
         if(!xss_validation(data)){ return false; }
         
@@ -94,7 +94,7 @@ $('#save,#update').on("click",function (e) {
         $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
 				$.ajax({
 				type: 'POST',
-				url: base_url+'sales/sales_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+"&other_charges_amt="+other_charges_amt,
+				url: base_url+'sales/sales_quote_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+"&other_charges_amt="+other_charges_amt,
 				data: data,
 				cache: false,
 				contentType: false,
@@ -104,7 +104,7 @@ $('#save,#update').on("click",function (e) {
 				result=result.split("<<<###>>>");
 					if(result[0]=="success")
 					{
-						location.href=base_url+"sales/invoice/"+result[1];
+						location.href=base_url+"sales/quotation/"+result[1];
 					}
 					else if(result[0]=="failed")
 					{
@@ -313,12 +313,12 @@ function delete_payment(payment_id){
   }
 
   //Delete Record start
-function delete_sales(q_id)
+function delete_sales_quote(q_id)
 {
   
    if(confirm("Do You Wants to Delete Record ?")){
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-    $.post("sales/delete_sales",{q_id:q_id},function(result){
+    $.post("delete_sales_quote",{q_id:q_id},function(result){
    //alert(result);return;
      if(result=="success")
         {
@@ -337,10 +337,11 @@ function delete_sales(q_id)
    }//end confirmation
 }
 //Delete Record end
-function multi_delete(){
+function multi_delete_quote(){
   //var base_url=$("#base_url").val().trim();
     var this_id=this.id;
-    
+    var base_url = document.getElementById('base_url').value; // Assuming 'base_url' is the ID of an input element
+var url = base_url + '/sales/multi_delete_quote';
     if(confirm("Are you sure ?")){
       data = new FormData($('#table_form')[0]);//form name
       /*Check XSS Code*/
@@ -350,7 +351,7 @@ function multi_delete(){
       $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
       $.ajax({
       type: 'POST',
-      url: 'sales/multi_delete',
+      url: url,
       data: data,
       cache: false,
       contentType: false,

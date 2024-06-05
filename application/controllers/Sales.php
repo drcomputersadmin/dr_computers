@@ -5,7 +5,9 @@ class Sales extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load_global(); 
-		$this->load->model('sales_model','sales');
+		$this->load->model('sales_model', 'sales');
+        $this->load->model('sales_quote_model', 'sales_quote');
+		$this->load->model('sales_delivery_model', 'sales_delivery');
 		$this->load->helper('sms_template_helper');
 	}
 
@@ -17,7 +19,7 @@ class Sales extends MY_Controller {
 	{
 		$this->permission_check('sales_view');
 		$data=$this->data;
-		$data['page_title']=$this->lang->line('sales_list');
+		$data['page_title']=$this->lang->line('invoice_list');
 		$this->load->view('sales-list',$data);
 	}
 	public function add()
@@ -27,8 +29,57 @@ class Sales extends MY_Controller {
 		$data['page_title']=$this->lang->line('sales');
 		$this->load->view('sales',$data);
 	}
-	
-
+	//for quotation
+	public function viewQuotation()
+	{
+		$this->permission_check('sales_view');
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('sales_list');
+		$this->load->view('sales-quote-list',$data);
+	}
+	public function addQuotation()
+	{	
+		$this->permission_check('sales_add');
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('new_sales');
+		$this->load->view('sales-quote',$data);
+	}
+	public function viewDelivery()
+	{
+		$this->permission_check('sales_view');
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('delivery_list');
+		$this->load->view('sales-delivery-list',$data);
+	}
+	public function addDelivery()
+	{	
+		$this->permission_check('sales_add');
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('new_delivery');
+		$this->load->view('sales-delivery',$data);
+	}
+	public function sales_delivery_save_and_update(){
+		$this->form_validation->set_rules('sales_date', 'Sales Date', 'trim|required');
+		$this->form_validation->set_rules('customer_id', 'Customer Name', 'trim|required');
+		
+		if ($this->form_validation->run() == TRUE) {
+	    	$result = $this->sales_quote->verify_save_and_update();
+	    	echo $result;
+		} else {
+			echo "Please Fill Compulsory(* marked) Fields.";
+		}
+	}
+	public function sales_quote_save_and_update(){
+		$this->form_validation->set_rules('sales_date', 'Sales Date', 'trim|required');
+		$this->form_validation->set_rules('customer_id', 'Customer Name', 'trim|required');
+		
+		if ($this->form_validation->run() == TRUE) {
+	    	$result = $this->sales_quote->verify_save_and_update();
+	    	echo $result;
+		} else {
+			echo "Please Fill Compulsory(* marked) Fields.";
+		}
+	}
 	public function sales_save_and_update(){
 		$this->form_validation->set_rules('sales_date', 'Sales Date', 'trim|required');
 		$this->form_validation->set_rules('customer_id', 'Customer Name', 'trim|required');
@@ -40,7 +91,20 @@ class Sales extends MY_Controller {
 			echo "Please Fill Compulsory(* marked) Fields.";
 		}
 	}
-	
+	public function update_quote($id){
+		$this->permission_check('sales_edit');
+		$data=$this->data;
+		$data=array_merge($data,array('sales_id'=>$id));
+		$data['page_title']=$this->lang->line('sales_quotation');
+		$this->load->view('sales-quote', $data);
+	}
+	public function update_delivery($id){
+		$this->permission_check('sales_edit');
+		$data=$this->data;
+		$data=array_merge($data,array('sales_id'=>$id));
+		$data['page_title']=$this->lang->line('sales_quotation');
+		$this->load->view('sales-quote', $data);
+	}
 	
 	public function update($id){
 		$this->permission_check('sales_edit');
@@ -109,6 +173,23 @@ class Sales extends MY_Controller {
 													<i class="fa fa-fw fa-edit text-blue"></i>Edit
 												</a>
 											</li>';
+											// if($this->permissions('sales_edit'))
+											// $str2.='<li>
+											// 	<a title="Delivery Note" href="'.$str1.$sales->id.'">
+											// 		<i class="fa fa-fw fa-edit text-blue"></i>Convert to Delivery Note
+											// 	</a>
+											// </li>';
+											if (!$sales->transferred_to_delivery_note && $this->permissions('sales_edit')) {
+												$base_url = base_url(); // Or use site_url() if routes are properly configured
+												$convert_url = $base_url . 'sales/convert_to_delivery_note/' . $sales->id;
+											
+												// Add "Convert to Invoice" option
+												$str2 .= '<li>
+													<a title="Convert to Delivery Note" href="' . $convert_url . '">
+														<i class="fa fa-fw fa-edit text-blue"></i>Convert to Delivery Note
+													</a>
+												</li>';
+											}
 
 											if($this->permissions('sales_payment_view'))
 											$str2.='<li>
@@ -173,6 +254,241 @@ class Sales extends MY_Controller {
 		//output to json format
 		echo json_encode($output);
 	}
+	public function ajax_list_quote()
+	{
+		$list = $this->sales_quote->get_datatables();
+		
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $sales) {
+			
+			$no++;
+			$row = array();
+			$row[] = '<input type="checkbox" name="checkbox[]" value='.$sales->id.' class="checkbox column_checkbox" >';
+			$row[] = show_date($sales->sales_date);
+
+			$info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
+
+			$row[] = $sales->sales_code.$info;
+			$row[] = $sales->sales_status;
+			$row[] = $sales->reference_no;
+			$row[] = $sales->customer_name;
+			//$row[] = $sales->warehouse_name;
+			$row[] = app_number_format($sales->grand_total);
+		
+					$str='';
+					if($sales->payment_status=='Unpaid')
+			          $str= "<span class='label label-danger' style='cursor:pointer'>Unpaid </span>";
+			        if($sales->payment_status=='Partial')
+			          $str="<span class='label label-warning' style='cursor:pointer'> Partial </span>";
+			        if($sales->payment_status=='Paid')
+			          $str="<span class='label label-success' style='cursor:pointer'> Paid </span>";
+
+					  $status_text = $sales->transferred_to_invoice ? 'Transferred to Invoice' : 'Pending';
+					  $status_color = $sales->transferred_to_invoice ? 'success' : 'warning';
+					  
+					  $row[] = '<span class="label label-' . $status_color . '">' . $status_text . '</span>';
+					  
+
+			
+			$row[] = ucfirst($sales->created_by);
+
+					 if($sales->pos ==1):
+					 	$str1='pos/edit/';
+					 else:
+					 	$str1='sales/update_quote/';
+					 endif;
+
+					$str2 = '<div class="btn-group" title="View Account">
+										<a class="btn btn-primary btn-o dropdown-toggle" data-toggle="dropdown" href="#">
+											Action <span class="caret"></span>
+										</a>
+										<ul role="menu" class="dropdown-menu dropdown-light pull-right">';
+											if($this->permissions('sales_view'))
+											$str2.='<li>
+												<a title="View Invoice" href="quotation/'.$sales->id.'" >
+													<i class="fa fa-fw fa-eye text-blue"></i>View Quotation
+												</a>
+											</li>';
+
+											if ($this->permissions('sales_edit')) {
+												$base_url = base_url();
+												$str2 .= '<li>
+													<a title="Update Record?" href="' . $base_url . $str1 . $sales->id . '">
+														<i class="fa fa-fw fa-edit text-blue"></i>Edit
+													</a>
+												</li>';
+											}
+											
+											if (!$sales->transferred_to_invoice && $this->permissions('sales_edit')) {
+												$base_url = base_url(); // Or use site_url() if routes are properly configured
+												$convert_url = $base_url . 'sales/convert_to_invoice/' . $sales->id;
+											
+												// Add "Convert to Invoice" option
+												$str2 .= '<li>
+													<a title="Convert to Invoice" href="' . $convert_url . '">
+														<i class="fa fa-fw fa-edit text-blue"></i>Convert to Invoice
+													</a>
+												</li>';
+											}
+
+										
+
+										
+
+											if($this->permissions('sales_add') || $this->permissions('sales_edit'))
+											$str2.='<li>
+												<a title="Update Record ?" target="_blank" href="print_quote/'.$sales->id.'">
+													<i class="fa fa-fw fa-print text-blue"></i>Print
+												</a>
+											</li>
+
+											<li>
+												<a title="Update Record ?" target="_blank" href="pdf_quote/'.$sales->id.'">
+													<i class="fa fa-fw fa-file-pdf-o text-blue"></i>PDF
+												</a>
+											</li>';
+											//<li>
+											//	<a style="cursor:pointer" title="Print POS Invoice ?" onclick="print_invoice('.$sales->id.')">
+											//		<i class="fa fa-fw fa-file-text text-blue"></i>POS Invoice
+											//	</a>
+											//</li>';
+
+										
+
+											if($this->permissions('sales_delete'))
+											$str2.='<li>
+												<a style="cursor:pointer" title="Delete Record ?" onclick="delete_sales_quote(\''.$sales->id.'\')">
+													<i class="fa fa-fw fa-trash text-red"></i>Delete
+												</a>
+											</li>
+											
+										</ul>
+									</div>';			
+
+			$row[] = $str2;
+
+			$data[] = $row;
+		}
+
+		$output = array(
+						"draw" => $_POST['draw'],
+						"recordsTotal" => $this->sales_quote->count_all(),
+						"recordsFiltered" => $this->sales_quote->count_filtered(),
+						"data" => $data,
+				);
+		//output to json format
+		echo json_encode($output);
+	}
+	public function ajax_list_delivery()
+	{
+		$list = $this->sales_delivery->get_datatables();
+		
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $sales) {
+			
+			$no++;
+			$row = array();
+			$row[] = '<input type="checkbox" name="checkbox[]" value='.$sales->id.' class="checkbox column_checkbox" >';
+			$row[] = show_date($sales->delivery_date);
+
+			$info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
+
+			$row[] = $sales->delivery_code.$info;
+			$row[] = $sales->delivery_status;
+			$row[] = $sales->reference_no;
+			$row[] = $sales->customer_name;
+			//$row[] = $sales->warehouse_name;
+			// $row[] = app_number_format($sales->grand_total);
+			// $row[] = app_number_format($sales->paid_amount);
+			// $row[] = app_number_format($sales->sales_due);
+					// $str='';
+					// if($sales->payment_status=='Unpaid')
+			        //   $str= "<span class='label label-danger' style='cursor:pointer'>Unpaid </span>";
+			        // if($sales->payment_status=='Partial')
+			        //   $str="<span class='label label-warning' style='cursor:pointer'> Partial </span>";
+			        // if($sales->payment_status=='Paid')
+			        //   $str="<span class='label label-success' style='cursor:pointer'> Paid </span>";
+
+					//   $status_text = $sales->transferred_to_invoice ? 'Transferred to Invoice' : 'Pending';
+					//   $status_color = $sales->transferred_to_invoice ? 'success' : 'warning';
+					  
+					//   $row[] = '<span class="label label-' . $status_color . '">' . $status_text . '</span>';
+					  
+
+			
+			$row[] = ucfirst($sales->created_by);
+
+					 if($sales->pos ==1):
+					 	$str1='pos/edit/';
+					 else:
+					 	$str1='sales/update_delivery/';
+					 endif;
+
+					$str2 = '<div class="btn-group" title="View Account">
+										<a class="btn btn-primary btn-o dropdown-toggle" data-toggle="dropdown" href="#">
+											Action <span class="caret"></span>
+										</a>
+										<ul role="menu" class="dropdown-menu dropdown-light pull-right">';
+											if($this->permissions('sales_view'))
+											$str2.='<li>
+												<a title="View Delivery Note" href="delivery/'.$sales->id.'" >
+													<i class="fa fa-fw fa-eye text-blue"></i>View Delivery note
+												</a>
+											</li>';
+
+										
+											
+
+										
+
+										
+
+											if($this->permissions('sales_add') || $this->permissions('sales_edit'))
+											$str2.='<li>
+												<a title="Update Record ?" target="_blank" href="print_delivery/'.$sales->id.'">
+													<i class="fa fa-fw fa-print text-blue"></i>Print
+												</a>
+											</li>
+
+											<li>
+												<a title="Update Record ?" target="_blank" href="pdf_delivery/'.$sales->id.'">
+													<i class="fa fa-fw fa-file-pdf-o text-blue"></i>PDF
+												</a>
+											</li>';
+											//<li>
+											//	<a style="cursor:pointer" title="Print POS Invoice ?" onclick="print_invoice('.$sales->id.')">
+											//		<i class="fa fa-fw fa-file-text text-blue"></i>POS Invoice
+											//	</a>
+											//</li>';
+
+										
+
+											if($this->permissions('sales_delete'))
+											$str2.='<li>
+												<a style="cursor:pointer" title="Delete Record ?" onclick="delete_sales_quote(\''.$sales->id.'\')">
+													<i class="fa fa-fw fa-trash text-red"></i>Delete
+												</a>
+											</li>
+											
+										</ul>
+									</div>';			
+
+			$row[] = $str2;
+
+			$data[] = $row;
+		}
+
+		$output = array(
+						"draw" => $_POST['draw'],
+						"recordsTotal" => $this->sales_delivery->count_all(),
+						"recordsFiltered" => $this->sales_delivery->count_filtered(),
+						"data" => $data,
+				);
+		//output to json format
+		echo json_encode($output);
+	}
 	public function update_status(){
 		$this->permission_check('sales_edit');
 		$id=$this->input->post('id');
@@ -187,10 +503,25 @@ class Sales extends MY_Controller {
 		$id=$this->input->post('q_id');
 		echo $this->sales->delete_sales($id);
 	}
+	public function delete_sales_quote(){
+		$this->permission_check_with_msg('sales_delete');
+		$id=$this->input->post('q_id');
+		echo $this->sales_quote->delete_sales_quote($id);
+	}
+	public function delete_sales_delivery(){
+		$this->permission_check_with_msg('sales_delete');
+		$id=$this->input->post('q_id');
+		echo $this->sales_delivery->delete_sales_quote($id);
+	}
 	public function multi_delete(){
 		$this->permission_check_with_msg('sales_delete');
 		$ids=implode (",",$_POST['checkbox']);
 		echo $this->sales->delete_sales($ids);
+	}
+	public function multi_delete_quote(){
+		$this->permission_check_with_msg('sales_delete');
+		$ids=implode (",",$_POST['checkbox']);
+		echo $this->sales_quote->delete_sales_quote($ids);
 	}
 
 
@@ -219,6 +550,120 @@ class Sales extends MY_Controller {
 		$this->load->view('sal-invoice',$data);
 	}
 	
+	//Print sales quotation 
+	public function quotation($id)
+	{	
+		if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+			$this->show_access_denied_page();
+		}
+		$data=$this->data;
+		$data=array_merge($data,array('sales_id'=>$id));
+		$data['page_title']=$this->lang->line('sales_quotation');
+		$this->load->view('sal-quotation',$data);
+	}
+
+	public function print_quotation($sales_id)
+	{
+		if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+			$this->show_access_denied_page();
+		}
+		$data=$this->data;
+		$data=array_merge($data,array('sales_id'=>$sales_id));
+		$data['page_title']=$this->lang->line('sales_quotation');
+		if(get_invoice_format_id()==3){
+			$this->load->view('print-sales-quote-3',$data);
+		}
+		else if(get_invoice_format_id()==2){
+			$this->load->view('print-sales-quote-3',$data);
+		}
+		else{
+			$this->load->view('print-sales-quote-2',$data);
+		}
+	}
+	public function pdf_quote($sales_id){
+		if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+			$this->show_access_denied_page();
+		}
+		$this->load->model('pdf_model');
+
+		$data['sales_id']=$sales_id;
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('sales_quotation');
+        $data=array_merge($data,array('sales_id'=>$sales_id));
+        if(get_invoice_format_id()==3){
+			$this->load->view('print-sales-quote-3',$data);
+		}
+		else if(get_invoice_format_id()==2){
+					//mb_internal_encoding('UTF-8');
+			$this->load->view('print-sales-quote-2',$data);
+		}
+		else{
+			$this->load->library('Pdf');
+			$this->load->view('print-sales-quote',$data);
+	
+			// Output the PDF as a download
+			$this->load->view('print-sales-quote','D');
+		}
+
+
+	}
+	//print delivery Note
+	public function delivery($id)
+	{	
+		if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+			$this->show_access_denied_page();
+		}
+		$data=$this->data;
+		$data=array_merge($data,array('sales_id'=>$id));
+		$data['page_title']=$this->lang->line('sales_delivery');
+		$this->load->view('sal-delivery',$data);
+	}
+
+	public function print_delivery($sales_id)
+	{
+		if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+			$this->show_access_denied_page();
+		}
+		$data=$this->data;
+		$data=array_merge($data,array('sales_id'=>$sales_id));
+		$data['page_title']=$this->lang->line('sales_delivery');
+		if(get_invoice_format_id()==3){
+			$this->load->view('print-sales-delivery-3',$data);
+		}
+		else if(get_invoice_format_id()==2){
+			$this->load->view('print-sales-delivery-3',$data);
+		}
+		else{
+			$this->load->view('print-sales-delivery-2',$data);
+		}
+	}
+	public function pdf_delivery($sales_id){
+		if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+			$this->show_access_denied_page();
+		}
+		$this->load->model('pdf_model');
+
+		$data['sales_id']=$sales_id;
+		$data=$this->data;
+		$data['page_title']=$this->lang->line('sales_delivery');
+        $data=array_merge($data,array('sales_id'=>$sales_id));
+        if(get_invoice_format_id()==3){
+			$this->load->view('print-sales-delivery-3',$data);
+		}
+		else if(get_invoice_format_id()==2){
+					//mb_internal_encoding('UTF-8');
+			$this->load->view('print-sales-delivery-2',$data);
+		}
+		else{
+			$this->load->library('Pdf');
+			$this->load->view('print-sales-quote',$data);
+	
+			// Output the PDF as a download
+			$this->load->view('print-sales-delivery','D');
+		}
+
+
+	}
 	//Print sales invoice 
 	public function print_invoice($sales_id)
 	{
@@ -309,4 +754,39 @@ class Sales extends MY_Controller {
 		$sales_id=$this->input->post('sales_id');
 		echo $this->sales->view_payments_modal($sales_id);
 	}
+
+	public function convert_to_invoice($quotation_id) {
+        $result = $this->sales_quote->convert_to_invoice($quotation_id);
+     
+		if ($result['status'] === 'success') {
+			$this->session->set_flashdata('success', $result['message']);
+		} else {
+			if ($result['reason'] === 'not_found') {
+				$this->session->set_flashdata('error', 'Quotation not found.');
+			} else {
+				$this->session->set_flashdata('error', $result['message']);
+			}
+		}
+	
+		redirect('sales/viewQuotation');
+        // Redirect back to the quotations list or relevant page
+       
+    }
+	public function convert_to_delivery_note($sales_id) {
+        $result = $this->sales->convert_to_delivery_note($sales_id);
+     
+		if ($result['status'] === 'success') {
+			$this->session->set_flashdata('success', $result['message']);
+		} else {
+			if ($result['reason'] === 'not_found') {
+				$this->session->set_flashdata('error', 'Quotation not found.');
+			} else {
+				$this->session->set_flashdata('error', $result['message']);
+			}
+		}
+	
+		redirect('sales/viewQuotation');
+        // Redirect back to the quotations list or relevant page
+       
+    }
 }

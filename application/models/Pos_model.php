@@ -415,6 +415,7 @@ class Pos_model extends CI_Model {
 
 	public function update_items_quantity($item_id){
 		//UPDATE itemS QUANTITY IN itemS TABLE
+		
 		$q7=$this->db->query("select COALESCE(SUM(qty),0) as stock_qty from db_stockentry where item_id='$item_id'");
 		$stock_qty=$q7->row()->stock_qty;
 
