@@ -903,3 +903,347 @@ ERROR - 2024-06-05 14:59:27 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-06-05 14:59:27 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-06-05 14:59:28 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-06-05 14:59:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined property: Login::$data C:\xampp\htdocs\DRC_Accounting\application\controllers\Login.php 16
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 15
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 23
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21425
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21435
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21469
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21470
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21471
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21482
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21484
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21486
+ERROR - 2024-06-05 18:11:18 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21522
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Bootstrap/css
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Dist/css
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Plugins/jQuery
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Bootstrap/js
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-05 18:11:18 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined property: Login::$data C:\xampp\htdocs\DRC_Accounting\application\controllers\Login.php 16
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 15
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 23
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21425
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21435
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21469
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21470
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21471
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21482
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21484
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21486
+ERROR - 2024-06-05 18:14:26 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21522
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Bootstrap/css
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Dist/css
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Plugins/jQuery
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Bootstrap/js
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-05 18:14:26 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-05 18:14:33 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:14:33 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:14:33 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:14:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:14:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:14:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:14:42 --> Severity: error --> Exception: Unknown column 'grand_total' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 16:15:16 --> Severity: error --> Exception: Unknown column 'grand_total' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 16:16:06 --> Severity: error --> Exception: Unknown column 'grand_total' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 18:16:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:16:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:16:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:16:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:17:31 --> Severity: error --> Exception: Unknown column 'transferred_to_invoice' in 'where clause' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 16:24:08 --> Severity: error --> Exception: Unknown column 'transferred_to_invoice' in 'where clause' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 18:25:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:25:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:25:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:25:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:25:04 --> Severity: error --> Exception: Unknown column 'a.return_bit' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 18:25:38 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "search" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 55
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "length" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 95
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "length" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 96
+ERROR - 2024-06-05 16:25:46 --> Severity: Warning --> Undefined array key "start" C:\xampp\htdocs\DRC_Accounting\application\models\Sales_delivery_model.php 96
+ERROR - 2024-06-05 16:25:46 --> Severity: error --> Exception: Unknown column 'a.return_bit' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 18:25:54 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:25:54 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:25:55 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:25:55 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:25:56 --> Severity: error --> Exception: Unknown column 'a.return_bit' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 18:28:12 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:28:12 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:28:12 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:28:12 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:28:12 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 16:28:13 --> Severity: error --> Exception: Unknown column 'a.grand_total' in 'field list' C:\xampp\htdocs\DRC_Accounting\system\database\drivers\mysqli\mysqli_driver.php 305
+ERROR - 2024-06-05 18:29:02 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:29:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:29:03 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:29:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:29:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:29:03 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:29:03 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 423
+ERROR - 2024-06-05 16:31:53 --> Could not find the language line "delivery_date"
+ERROR - 2024-06-05 16:31:53 --> Could not find the language line "delivery_code"
+ERROR - 2024-06-05 16:31:53 --> Could not find the language line "delivery_status"
+ERROR - 2024-06-05 16:31:53 --> Could not find the language line "customer_phone"
+ERROR - 2024-06-05 16:31:53 --> Could not find the language line "delivery_address"
+ERROR - 2024-06-05 18:31:53 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:31:53 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:31:53 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:31:53 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:34:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:34:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:34:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:34:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:35:32 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:35:32 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:35:32 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:35:32 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:37 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:37 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:37 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:37 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:58 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:58 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:59 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:39:59 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:25 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:25 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:25 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:25 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:28 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:40:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:40:34 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:40:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:41:16 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:41:16 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:41:17 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:41:17 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:41:17 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:42:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:04 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:42:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:06 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:06 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:07 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:42:07 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:42:07 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:43:47 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:43:47 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:43:47 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:43:47 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:43:47 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:02 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:02 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:03 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:44:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:27 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:44:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:44:27 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:15 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:45:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:44 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:44 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:45 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:45:45 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:31 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:46:33 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:34 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:34 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:46:48 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:48 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:49 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:46:49 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:49 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:56 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:56 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:56 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:56 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:46:56 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:47:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:47:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:47:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:47:28 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:14 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:14 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:14 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:14 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:20 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:48:21 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:21 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:22 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:48:22 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:22 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:26 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:26 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:26 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:26 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:48:26 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:49:00 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:00 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:01 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:01 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:01 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:49:16 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:49:43 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:43 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:43 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:49:44 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:49:44 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:50:13 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:50:13 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:50:13 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:50:13 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:03 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:35 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:51:49 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:49 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:50 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 18:51:50 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:51:50 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:52:31 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:52:31 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:52:31 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:52:31 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:52:31 --> 404 Page Not Found: Theme/plugins
+ERROR - 2024-06-05 16:52:32 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:52:32 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 18:55:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:04 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:55:05 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:05 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:05 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:05 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:05 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:05 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 18:55:06 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:06 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:06 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:06 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:55:06 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:06 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:06 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:06 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:06 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:55:06 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 18:55:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:55:15 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:55:15 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:55:15 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 16:55:15 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:55:15 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 18:56:38 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:56:38 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:56:38 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:56:38 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:56:38 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:56:38 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:56:38 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:56:38 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:56:38 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 16:56:38 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 18:56:52 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:56:52 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:56:52 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:56:52 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:56:52 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:56:52 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 16:56:52 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:56:52 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 18:57:46 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:57:46 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:57:46 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:57:46 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:57:46 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:57:46 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 16:57:46 --> Severity: Warning --> Undefined property: stdClass::$delivery_status C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 399
+ERROR - 2024-06-05 16:57:46 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 18:59:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:59:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:59:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 18:59:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 16:59:29 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 16:59:29 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 19:00:00 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:00:00 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:00:00 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:00:00 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 17:00:00 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 17:00:00 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 19:01:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:01:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:01:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:01:10 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 17:01:11 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:11 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:11 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:11 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:11 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:11 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:14 --> Severity: error --> Exception: Call to undefined function printr_() C:\xampp\htdocs\DRC_Accounting\application\models\Sales_model.php 1065
+ERROR - 2024-06-05 17:01:26 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:26 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:26 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:26 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:26 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 17:01:26 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-05 19:01:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:01:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:01:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 19:01:29 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-05 17:01:29 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 17:01:29 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411
+ERROR - 2024-06-05 17:01:29 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 411

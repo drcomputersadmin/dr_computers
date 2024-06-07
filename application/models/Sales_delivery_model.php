@@ -5,8 +5,8 @@ class Sales_delivery_model extends CI_Model {
 
 	//Datatable start
 	var $table = 'db_delivery_notes as a';
-	var $column_order = array( 'a.return_bit','a.id','a.delivery_date','a.delivery_code','a.reference_no','a.created_by','b.customer_name'); //set column field database for datatable orderable
-	var $column_search = array('a.return_bit','a.id','a.delivery_date','a.delivery_code','a.reference_no','a.created_by','b.customer_name','a.delivery_status'); //set column field database for datatable searchable 
+	var $column_order = array( 'a.id','a.delivery_date','a.delivery_code','a.reference_no','a.created_by','a.delivery_status','b.customer_name','b.phone','b.address'); //set column field database for datatable orderable
+	var $column_search = array('a.id','a.delivery_date','a.delivery_code','a.reference_no','a.created_by','b.customer_name','a.delivery_status'); //set column field database for datatable searchable 
 	var $order = array('a.id' => 'desc'); // default order  
 
 	public function __construct()
@@ -20,7 +20,7 @@ class Sales_delivery_model extends CI_Model {
 		
 		$this->db->select($this->column_order);
 		$this->db->from($this->table);
-		$this->db->select("coalesce(a.grand_total,0)-coalesce(a.paid_amount,0) as sales_due");
+	
 		$this->db->from('db_customers as b');
 		//$this->db->from('db_warehouse as c');
 		$this->db->where('b.id=a.customer_id');
@@ -188,7 +188,7 @@ class Sales_delivery_model extends CI_Model {
             echo "failed";
         }
 	}
-	public function delete_sales_delivery($ids){
+	public function delete_delivery_notes($ids){
       	$this->db->trans_begin();
       	//Find the customer id in one aray
       	$q11 = $this->db->select("customer_id,id")->where("id in ($ids)")->get("db_delivery_notes");
@@ -389,9 +389,95 @@ class Sales_delivery_model extends CI_Model {
 		<?php
 
 	}
+	public function update_delivery_status($id, $status)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('db_delivery_notes', array('delivery_status' => $status));
+    }
 	
 	
+	public function show_add_note_modal($sales_id){
+		
+
+		
+		?>
+	<div class="modal fade" id="add_note_model">
+		  <div class="modal-dialog ">
+		    <div class="modal-content">
+		      <div class="modal-header header-custom">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title text-center">Add Note</h4>
+		      </div>
+		      <div class="modal-body">
+		        
+		    <div class="row">
+		     
+		      <div class="col-md-12">
+		        <div>
+		       
+		        <div class="col-md-12  payments_div">
+		          <div class="box box-solid bg-gray">
+		            <div class="box-body">
+		               
+		        <div class="row">
+		               <div class="col-md-12">
+		                  <div class="">
+		                    <label for="payment_note"> Note</label>
+		                    <textarea type="text" class="form-control" id="note" name="note" placeholder="" ></textarea>
+		                    <span id="note_msg" style="display:none" class="text-danger"></span>
+		                  </div>
+		               </div>
+		                
+		            <div class="clearfix"></div>
+		        </div>   
+		        </div>
+		        </div>
+		      </div><!-- col-md-12 -->
+		    </div>
+		      </div><!-- col-md-9 -->
+		      <!-- RIGHT HAND -->
+		    </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+		        <button type="button" onclick="save_note(<?=$sales_id;?>)" class="btn bg-green btn-lg place_order btn-lg payment_save">Save<i class="fa  fa-check "></i></button>
+		      </div>
+		    </div>
+		    <!-- /.modal-content -->
+		  </div>
+		  <!-- /.modal-dialog -->
+		</div>
+		<?php
+	}
+	public function save_note(){
+		extract($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));
+		//print_r($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));exit();
+    	
 	
+			$entry = array(
+					'delivery_note' 		=> $note, 
+				
+				);
+
+				$q1 = $this->db->where('id',$sales_id)->update('db_delivery_notes', $entry);
+		
+		
+				$success = $this->db->affected_rows() > 0;
+
+				// Prepare response data
+				$response = array(
+					'success' => $success,
+					'message' => $success ? 'Note saved successfully' : 'Failed to save note'
+				);
+			
+				// Send JSON response back to client-side
+				echo json_encode($response);
+	
+		
+	
+
+	}
 	
 	
 

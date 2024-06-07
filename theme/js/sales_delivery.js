@@ -9,119 +9,7 @@ function shift_cursor(kevent,target){
 }
 
 
-$('#save,#update').on("click",function (e) {
-	var base_url=$("#base_url").val().trim();
 
-    //Initially flag set true
-    var flag=true;
-
-    function check_field(id)
-    {
-
-      if(!$("#"+id).val().trim() ) //Also check Others????
-        {
-
-            $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
-           // $('#'+id).css({'background-color' : '#E8E2E9'});
-            flag=false;
-        }
-        else
-        {
-             $('#'+id+'_msg').fadeOut(200).hide();
-             //$('#'+id).css({'background-color' : '#FFFFFF'});    //White color
-        }
-    }
-
-
-   //Validate Input box or selection box should not be blank or empty
-	  check_field("customer_id");
-    check_field("sales_date");
-    check_field("sales_status");
-    //check_field("warehouse_id");
-	/*if(!isNaN($("#amount").val().trim()) && parseFloat($("#amount").val().trim())==0){
-        toastr["error"]("You have entered Payment Amount! <br>Please Select Payment Type!");
-        return;
-    }*/
-	if(flag==false)
-	{
-		toastr["error"]("You have missed Something to Fillup!");
-		return;
-	}
-
-	//Atleast one record must be added in sales table 
-    var rowcount=document.getElementById("hidden_rowcount").value;
-	var flag1=false;
-	for(var n=1;n<=rowcount;n++){
-		if($("#td_data_"+n+"_3").val()!=null && $("#td_data_"+n+"_3").val()!=''){
-			flag1=true;
-		}	
-	}
-	
-    if(flag1==false){
-    	toastr["warning"]("Please Select Item!!");
-        $("#item_search").focus();
-		return;
-    }
-    //end
-
-    // if($("#customer_id").val().trim()==1){
-    //   if(parseFloat($("#total_amt").text())!=parseFloat($("#amount").val())){
-    //     $("#amount").focus();
-    //     toastr["warning"]("Walk-in Customer Should Pay Complete Amount!!");
-    //     return;
-    //   }
-    //     if($("#payment_type").val()==''){
-    //       toastr["warning"]("Please Select Payment Type!!");
-    //       return;
-    //     }
-    // }
-
-    var tot_subtotal_amt=$("#subtotal_amt").text();
-    var other_charges_amt=$("#other_charges_amt").text();//other_charges include tax calcualated amount
-    var tot_discount_to_all_amt=$("#discount_to_all_amt").text();
-    var tot_round_off_amt=$("#round_off_amt").text();
-    var tot_total_amt=$("#total_amt").text();
-
-    var this_id=this.id;
-    
-			//if(confirm("Do You Wants to Save Record ?")){
-				e.preventDefault();
-				data = new FormData($('#sales-form')[0]);//form name
-        /*Check XSS Code*/
-        if(!xss_validation(data)){ return false; }
-        
-        $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-        $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
-				$.ajax({
-				type: 'POST',
-				url: base_url+'sales/sales_save_and_update?command='+this_id+'&rowcount='+rowcount+'&tot_subtotal_amt='+tot_subtotal_amt+'&tot_discount_to_all_amt='+tot_discount_to_all_amt+'&tot_round_off_amt='+tot_round_off_amt+'&tot_total_amt='+tot_total_amt+"&other_charges_amt="+other_charges_amt,
-				data: data,
-				cache: false,
-				contentType: false,
-				processData: false,
-				success: function(result){
-         // alert(result);return;
-				result=result.split("<<<###>>>");
-					if(result[0]=="success")
-					{
-						location.href=base_url+"sales/invoice/"+result[1];
-					}
-					else if(result[0]=="failed")
-					{
-					   toastr['error']("Sorry! Failed to save Record.Try again");
-					}
-					else
-					{
-						alert(result);
-					}
-					$("#"+this_id).attr('disabled',false);  //Enable Save or Update button
-					$(".overlay").remove();
-
-			   }
-			   });
-		//}
-  
-});
 
 
 $('#item_search').keypress(function (e) {
@@ -226,6 +114,42 @@ $("#item_search").autocomplete({
         },   
         //loader end
 });
+$(document).ready(function() {
+  console.log("Dropdown changed");
+  $(document).on('change', '.delivery-status', function() {
+      console.log("Dropdown changed");
+      var deliveryId = $(this).data('id');
+      var newStatus = $(this).val();
+      var base_url = document.getElementById('base_url').value;
+      var url = base_url + '/sales/update_delivery_status';
+      $.ajax({
+          url: url,
+          type: 'POST',
+          data: {
+              id: deliveryId,
+              status: newStatus
+          },
+          success: function(response) {
+              if(response.result == "success") {
+                  toastr["success"]("Delivery status updated successfully!");
+              } else {
+                  toastr["error"]("Failed to update delivery status. Try again!");
+              }
+          },
+          error: function() {
+              toastr["error"]("An error occurred. Please try again!");
+          }
+      });
+  });
+});
+function add_note(sales_id) {
+  var base_url = document.getElementById('base_url').value;
+  $.post(base_url + 'sales/show_add_note_modal', {sales_id: sales_id}, function(result) {
+    $(".add_note_modal").html('').html(result);
+    // Initialize modal
+    $('#add_note_model').modal('toggle');
+  });
+}
 
 function return_row_with_data(item_id){
   $("#item_search").addClass('ui-autocomplete-loader-center');
@@ -272,53 +196,15 @@ function decrement_qty(rowcount){
   calculate_tax(rowcount);
 }
 
-function update_paid_payment_total() {
-  var rowcount=$("#paid_amt_tot").attr("data-rowcount");
-  var tot=0;
-  for(i=1;i<rowcount;i++){
-    if(document.getElementById("paid_amt_"+i)){
-      tot += parseFloat($("#paid_amt_"+i).html());
-    }
-  }
-  $("#paid_amt_tot").html(tot.toFixed(2));
-}
-function delete_payment(payment_id){
- if(confirm("Do You Wants to Delete Record ?")){
-    var base_url=$("#base_url").val().trim();
-    $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-   $.post(base_url+"sales/delete_payment",{payment_id:payment_id},function(result){
-   //alert(result);return;
-   result=result.trim();
-     if(result=="success")
-        { 
-          toastr["success"]("Record Deleted Successfully!");
-          $("#payment_row_"+payment_id).remove();
-          success.currentTime = 0; 
-          success.play();
-        }
-        else if(result=="failed"){
-          toastr["error"]("Failed to Delete .Try again!");
-          failed.currentTime = 0; 
-          failed.play();
-        }
-        else{
-          toastr["error"](result);
-          failed.currentTime = 0; 
-          failed.play();
-        }
-        $(".overlay").remove();
-        update_paid_payment_total();
-   });
-   }//end confirmation   
-  }
+
 
   //Delete Record start
-function delete_sales(q_id)
+function delete_delivery_notes(q_id)
 {
   
    if(confirm("Do You Wants to Delete Record ?")){
     $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-    $.post("sales/delete_sales",{q_id:q_id},function(result){
+    $.post("delete_delivery_notes",{q_id:q_id},function(result){
    //alert(result);return;
      if(result=="success")
         {
@@ -337,10 +223,11 @@ function delete_sales(q_id)
    }//end confirmation
 }
 //Delete Record end
-function multi_delete(){
+function multi_delete_delivery(){
   //var base_url=$("#base_url").val().trim();
     var this_id=this.id;
-    
+    var base_url = document.getElementById('base_url').value; // Assuming 'base_url' is the ID of an input element
+var url = base_url + '/sales/multi_delete_delivery';
     if(confirm("Are you sure ?")){
       data = new FormData($('#table_form')[0]);//form name
       /*Check XSS Code*/
@@ -350,7 +237,7 @@ function multi_delete(){
       $("#"+this_id).attr('disabled',true);  //Enable Save or Update button
       $.ajax({
       type: 'POST',
-      url: 'sales/multi_delete',
+      url: url,
       data: data,
       cache: false,
       contentType: false,
@@ -389,10 +276,14 @@ function multi_delete(){
 
 function pay_now(sales_id){
   $.post('sales/show_pay_now_modal', {sales_id: sales_id}, function(result) {
-  
-      $(".add_note_modal").html('').html(result);
-      $('#add_note_modal').modal('toggle');
-    
+    $(".pay_now_modal").html('').html(result);
+    //Date picker
+    $('.datepicker').datepicker({
+      autoclose: true,
+    format: 'dd-mm-yyyy',
+     todayHighlight: true
+    });
+    $('#pay_now').modal('toggle');
 
   });
 }
@@ -540,3 +431,61 @@ function delete_sales_payment(payment_id){
      $("#item_search").attr({ disabled: true,}); 
     }
   });*/
+  function save_note(sales_id) {
+    var base_url = $("#base_url").val().trim();
+
+    // Initially flag set true
+    var flag = true;
+
+    function check_field(id) {
+        if (!$("#" + id).val().trim()) {
+            $('#' + id + '_msg').fadeIn(200).show().html('Required Field').addClass('required');
+            flag = false;
+        } else {
+            $('#' + id + '_msg').fadeOut(200).hide();
+        }
+    }
+
+    // Validate Input box or selection box should not be blank or empty
+    var note = $("#note").val().trim(); // Fetching the note value
+    check_field("note");
+
+    if (!flag) {
+        return; // Don't proceed if validation fails
+    }
+
+    $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+    $(".note_save").attr('disabled', true); // Disable Save or Update button
+    
+  var base_url = document.getElementById('base_url').value;
+    
+    $.post(base_url + 'sales/save_note', {
+      sales_id: sales_id,
+      note: note},function(response) {
+        var result = JSON.parse(response);
+    
+        if (result.success) {
+            console.log("Success"); // For debugging
+            $('#add_note_model').modal('toggle');
+            toastr["success"]("Note Saved Successfully!");
+            success.currentTime = 0;
+            success.play();
+            $('#example2').DataTable().ajax.reload();
+        } else {
+            console.log("Failed"); // For debugging
+            toastr["error"](result.message || "An error occurred while saving the note. Please try again.");
+            failed.currentTime = 0;
+            failed.play();
+        }
+    
+        $(".note_save").attr('disabled', false); // Enable Save or Update button
+        $(".overlay").remove();
+    }).fail(function() {
+        toastr["error"]("An error occurred while processing your request. Please try again later.");
+        $(".note_save").attr('disabled', false); // Enable Save or Update button
+        $(".overlay").remove();
+    });
+  
+}
+
+  

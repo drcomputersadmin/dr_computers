@@ -1071,7 +1071,7 @@ class Sales_model extends CI_Model {
                 'sales_id'          => $sales_id,
                 'customer_id'           => $sale->customer_id,
                 'warehouse_id'    =>'0',
-               'delivery_status'=>'Delivered',
+               'delivery_status'=>'Process',
                 'delivery_address'            => $customer->address,
 				'contact_person'       =>$customer->address,
 				'contact_phone'       =>$customer->phone,
@@ -1144,8 +1144,9 @@ class Sales_model extends CI_Model {
 
     private function generate_delivery_code() {
         // Generate a unique sales code
-        $sales_init = $this->db->select('sales_init')->get('db_company')->row()->sales_init;
+        $sales_init = "DN";
         $max_id = $this->db->select_max('id')->get('db_sales')->row()->id + 1;
         return $sales_init . str_pad($max_id, 4, '0', STR_PAD_LEFT);
+		
     }
 }

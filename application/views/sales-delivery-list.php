@@ -15,22 +15,12 @@
 
   <?php 
       /*Total Invoices*/
-      $total_quotations=$this->db->query("SELECT COUNT(*) as total FROM db_sales_quote")->row()->total;
-      /*Total Invoices Total*/
-  $quote_to_sale=  $this->db->where('transferred_to_invoice', 1);
+   
  
   
 
   // Count the number of rows that satisfy the condition
-  $quote_to_sale_count = $this->db->count_all_results('db_sales_quote');
-      /*PAID AMOUNT*/
-      $this->db->select_sum('grand_total'); // Replace 'amount_column' with the actual column name containing the amount
-      $this->db->where('transferred_to_invoice', 1);
-      $query = $this->db->get('db_sales_quote');
-      $result = $query->row();
-      $total_amount_transferred = $result->grand_total;
-      //$sales_due_total = $sal_total - $sal_return_total;
-     
+  
   ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -50,59 +40,15 @@
     </div>
     <div class="view_payments_modal">
     </div>
+    <div class="add_note_modal">
+    </div>
 
     <!-- Main content -->
     <?= form_open('#', array('class' => '', 'id' => 'table_form')); ?>
     <input type="hidden" id='base_url' value="<?=$base_url;?>">
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      <div class="row">
-        <div class="col-lg-4 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3><?= $total_quotations;?></h3>
-
-              <p><?= $this->lang->line('total_quotations'); ?></p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="<?= base_url('reports/sales') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3><?= $quote_to_sale_count;?></h3>
-              <p><?= 'Quotation To Invoice' ?></p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-plus-square-o"></i>
-            </div>
-            <a href="<?= base_url('reports/sales') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3><?= $CI->currency($total_amount_transferred,$with_comma=true);?></h3>
-             <p><?= 'Total Amount Transferred to Invoice' ?></p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-undo"></i>
-            </div>
-            <a href="<?= base_url('reports/sales_return') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-       
-        <!-- ./col -->
-      </div>
+      
       <!-- /.row -->
       <div class="row">
         <!-- ********** ALERT MESSAGE START******* -->
@@ -219,20 +165,20 @@
                   <th class="text-center">
                     <input type="checkbox" class="group_check checkbox" >
                   </th>
-                  <th><?= $this->lang->line('sales_date'); ?></th>
-                  <th><?= $this->lang->line('sales_code'); ?></th>
-                  <th><?= $this->lang->line('sales_status'); ?></th>
+                  <th><?= $this->lang->line('delivery_date'); ?></th>
+                  <th><?= $this->lang->line('delivery_code'); ?></th>
+                  <th><?= $this->lang->line('delivery_status'); ?></th>
                   <th><?= $this->lang->line('reference_no'); ?></th>
                   <th><?= $this->lang->line('customer_name'); ?></th>
                   <!-- <th>Warehouse</th> -->
-                  <th><?= $this->lang->line('total'); ?></th>
+                  <th><?= $this->lang->line('customer_phone'); ?></th>
+                  <th><?= $this->lang->line('delivery_address'); ?></th>
                  
                 
 
-                  <th><?= $this->lang->line('reference_no'); ?></th>
-                  <th><?= $this->lang->line('customer_name'); ?></th>
                 
-                  <th><?= $this->lang->line('status'); ?></th>
+             
+                
                   <th><?= $this->lang->line('created_by'); ?></th>
                   <th><?= $this->lang->line('action'); ?></th>
                 </tr>
@@ -240,17 +186,7 @@
                 <tbody>
 				
                 </tbody>
-               <tfoot>
-                  <tr class="bg-gray">
-                      <th colspan="6" style="text-align:right">Total</th><!-- 6 -->
-                      <th></th><!-- 7 -->
-                      <th></th><!-- 8 -->
-                      <th></th><!-- 8 -->
-                      <th></th><!-- 7 -->
-                      <th></th><!-- 8 -->
-                      <th></th><!-- 8 -->
-                  </tr>
-              </tfoot>
+             
               </table>
             </div>
             <!-- /.box-body -->
@@ -326,7 +262,7 @@
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('sales/ajax_list_quote')?>",
+            "url": "<?php echo site_url('sales/ajax_list_delivery')?>",
             "type": "POST",
             "data": {
                       sales_from_date: $("#sales_from_date").val(),
@@ -360,40 +296,7 @@
         
         ],
         /*Start Footer Total*/
-        "footerCallback": function ( row, data, start, end, display ) {
-            var api = this.api(), data;
-            // Remove the formatting to get integer data for summation
-            var intVal = function ( i ) {
-                return typeof i === 'string' ?
-                    i.replace(/[\$,]/g, '')*1 :
-                    typeof i === 'number' ?
-                        i : 0;
-            };
-            var total = api
-                .column( 6, { page: 'none'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            var paid = api
-                .column( 7, { page: 'none'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            var due = api
-                .column( 8, { page: 'none'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-           
-            //$( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(app_number_format(total));
-            $( api.column( 7 ).footer() ).html(app_number_format(paid));
-            $( api.column( 8 ).footer() ).html(app_number_format(due));
-           
-        },
+       
         /*End Footer Total*/
     });
     new $.fn.dataTable.FixedHeader( table );
@@ -406,8 +309,48 @@ $("#sales_from_date,#sales_to_date,#user_created_by,#search_customer_id").on("ch
           $('#example2').DataTable().destroy();
           load_datatable();
       });
+   $(document).on('change', '.delivery-status', function() {
+      console.log("Dropdown changed");
+      var deliveryId = $(this).data('id');
+      var newStatus = $(this).val();
+      var base_url = document.getElementById('base_url').value;
+      var url = base_url + '/sales/update_delivery_status';
+      $.ajax({
+          url: url,
+          type: 'POST',
+          dataType: 'json', // Add this line
+          data: {
+              id: deliveryId,
+              status: newStatus
+          },
+          success: function(response) {
+              if(response.result == "success") {
+                  toastr["success"]("Delivery status updated successfully!");
+              } else {
+                  toastr["error"]("Failed to update delivery status. Try again!");
+              }
+          },
+          error: function() {
+              toastr["error"]("An error occurred. Please try again!");
+          }
+      });
+  });
+  function add_note(sales_id){
+  var base_url = document.getElementById('base_url').value;
+  $.post(base_url + 'sales/show_add_note_modal', {sales_id: sales_id}, function(result) {
+    $(".add_note_modal").html('').html(result);
+    //Date picker
+    $('.datepicker').datepicker({
+      autoclose: true,
+    format: 'dd-mm-yyyy',
+     todayHighlight: true
+    });
+    $('#add_note_model').modal('toggle');
+
+  });
+}
 </script>
-<script src="<?php echo $theme_link; ?>js/sales_quote.js"></script>
+<script src="<?php echo $theme_link; ?>js/sales_delivery.js"></script>
 <script type="text/javascript">
   function print_invoice(id){
   window.open("<?= base_url();?>pos/print_invoice_pos/"+id, "_blank", "scrollbars=1,resizable=1,height=500,width=500");

@@ -512,7 +512,7 @@ padding-right: 2px;
 </div>
 <!-- ./wrapper -->
 
-      <script src="<?php echo $theme_link; ?>js/sales_quote.js"></script>  
+      <script src="<?php echo $theme_link; ?>js/sales_delivery.js"></script>  
       <script>
         
          //Initialize Select2 Elements

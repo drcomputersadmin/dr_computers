@@ -534,6 +534,7 @@ $lang['adjust_stock'					]	=		'Adjust Stock';
 $lang['stock_adjustment_msg'			]	=		'Add(+) or Deduct(-) Stock, if you wanted deduct then you should use minum symbol.(Eg: -10.00)';
 $lang['adjustment_note'					]	=		'Adjustment Note';
 $lang['add_customer'					]	=		'Add Customer';
+
 $lang['add_supplier'					]	=		'Add Supplier';
 $lang['manage_sales_item'				]	=		'Manage Sales Item';
 $lang['manage_purchase_item'			]	=		'Manage Purchase Item';
@@ -549,3 +550,17 @@ $lang['category_wise'						]	=		'Category Wise';
 $lang['previous_due'						]	=		'Previous Due';
 $lang['return_invoice'						]	=		'Return Invoice';
 $lang['number_to_words_format'						]	=		'Number to Words Format';
+//added
+
+$lang['delivery_date']	=		'Delivery Date';
+$lang['delivery_code']	=		'Delivery Code';
+$lang['delivery_status']	=		'Delivery Status';
+
+
+
+$lang['customer_phone']	=		'Customer Phone';
+$lang['delivery_address']	=		'Delivery Address';
+
+$lang['delivery_note'			]	=		'Delivery Note';
+$lang['delivery'			]	=		'Delivery Note';
+$lang['add_item'					]	=		'Add Item';

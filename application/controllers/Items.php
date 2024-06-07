@@ -22,13 +22,36 @@ class Items extends MY_Controller {
 		$data['page_title']=$this->lang->line('items');
 		$this->load->view('items',$data);
 	}
+	//add items from modal
+	public function new_item_modal(){
+		$this->form_validation->set_rules('item_name', 'Item Name', 'trim|required');
+		$this->form_validation->set_rules('category_id', 'Category Name', 'trim|required');
+		$this->form_validation->set_rules('unit_id', 'Unit', 'trim|required');
+		$this->form_validation->set_rules('price', 'Item Price', 'trim|required');
+		$this->form_validation->set_rules('purchase_price', 'Purchase Price', 'trim|required');
+		$this->form_validation->set_rules('profit_margin', 'Profit Margin', 'trim|required');
+		$this->form_validation->set_rules('sales_price', 'Sales Price', 'trim|required');
+		
+		if ($this->form_validation->run() == TRUE) {
+			$result=$this->items->verify_and_save();
+			$res=array();
+			$query=$this->db->query("select id,item_name from db_items order by id desc limit 1");
+			$res['id']=$query->row()->id;
+			$res['brand']=$query->row()->item_name;
+			$res['result']=$result;
+			
+			echo json_encode($res);
+		} else {
+			echo "Please Fill Compulsory(* marked) Fields.";
+		}
+	}
 
 	public function newitems(){
 		$this->form_validation->set_rules('item_name', 'Item Name', 'trim|required');
 		$this->form_validation->set_rules('category_id', 'Category Name', 'trim|required');
 		$this->form_validation->set_rules('unit_id', 'Unit', 'trim|required');
 		$this->form_validation->set_rules('price', 'Item Price', 'trim|required');
-		$this->form_validation->set_rules('tax_id', 'Tax', 'trim|required');
+		
 		$this->form_validation->set_rules('purchase_price', 'Purchase Price', 'trim|required');
 		$this->form_validation->set_rules('profit_margin', 'Profit Margin', 'trim|required');
 		$this->form_validation->set_rules('sales_price', 'Sales Price', 'trim|required');

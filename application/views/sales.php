@@ -65,6 +65,7 @@ padding-right: 2px;
   <div class="content-wrapper">
     <!-- **********************MODALS***************** -->
     <?php include"modals/modal_customer.php"; ?>
+    <?php include"modals/modal_item.php"; ?>
     <?php include"modals/modal_pos_sales_item.php"; ?>
     <!-- **********************MODALS END***************** -->
     <!-- Content Header (Page header) -->
@@ -200,14 +201,20 @@ padding-right: 2px;
                                 <div class="col-md-12">
                                   <div class="box">
                                     <div class="box-info">
-                                      <div class="box-header">
-                                        <div class="col-md-8 col-md-offset-2 d-flex justify-content" >
-                                          <div class="input-group">
-                                                <span class="input-group-addon" title="Select Items"><i class="fa fa-barcode"></i></span>
-                                                 <input type="text" class="form-control " placeholder="Item name/Barcode/Itemcode" id="item_search">
-                                              </div>
-                                        </div>
-                                      </div>
+                                    <div class="box-header">
+    <div class="col-md-8 col-md-offset-2 d-flex justify-content">
+        <div class="input-group">
+            <span class="input-group-addon" title="Select Items"><i class="fa fa-barcode"></i></span>
+            <input type="text" class="form-control" placeholder="Item name/Barcode/Itemcode"  id="item_search">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" data-toggle="modal" data-target="#item-modal" title="New Item">
+                    <i class="fa fa-plus-square text-primary fa-lg"></i> 
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+
                                       <div class="box-body">
                                         <div class="table-responsive" style="width: 100%">
                                         <table class="table table-hover table-bordered" style="width:100%" id="sales_table">
@@ -505,6 +512,7 @@ padding-right: 2px;
 <?php include"comman/code_js_form.php"; ?>
 
 <script src="<?php echo $theme_link; ?>js/modals.js"></script>
+<script src="<?php echo $theme_link; ?>js/items.js"></script>
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>

@@ -383,7 +383,7 @@ class Sales extends MY_Controller {
 	public function ajax_list_delivery()
 	{
 		$list = $this->sales_delivery->get_datatables();
-		
+	
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $sales) {
@@ -393,28 +393,22 @@ class Sales extends MY_Controller {
 			$row[] = '<input type="checkbox" name="checkbox[]" value='.$sales->id.' class="checkbox column_checkbox" >';
 			$row[] = show_date($sales->delivery_date);
 
-			$info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
+			// $info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
 
-			$row[] = $sales->delivery_code.$info;
-			$row[] = $sales->delivery_status;
+			$row[] = $sales->delivery_code;
+			// $row[] = $sales->delivery_status;
+			$row[] = '<select class="delivery-status form-control select2" data-id="'.$sales->id.'">
+			<option value="Process"'.($sales->delivery_status == 'Process' ? ' selected' : '').'>Process</option>
+			
+			<option value="Delivered"'.($sales->delivery_status == 'Delivered' ? ' selected' : '').'>Delivered</option>
+			
+		  </select>';
 			$row[] = $sales->reference_no;
 			$row[] = $sales->customer_name;
-			//$row[] = $sales->warehouse_name;
-			// $row[] = app_number_format($sales->grand_total);
-			// $row[] = app_number_format($sales->paid_amount);
-			// $row[] = app_number_format($sales->sales_due);
-					// $str='';
-					// if($sales->payment_status=='Unpaid')
-			        //   $str= "<span class='label label-danger' style='cursor:pointer'>Unpaid </span>";
-			        // if($sales->payment_status=='Partial')
-			        //   $str="<span class='label label-warning' style='cursor:pointer'> Partial </span>";
-			        // if($sales->payment_status=='Paid')
-			        //   $str="<span class='label label-success' style='cursor:pointer'> Paid </span>";
-
-					//   $status_text = $sales->transferred_to_invoice ? 'Transferred to Invoice' : 'Pending';
-					//   $status_color = $sales->transferred_to_invoice ? 'success' : 'warning';
-					  
-					//   $row[] = '<span class="label label-' . $status_color . '">' . $status_text . '</span>';
+			$row[] = $sales->phone;
+			$row[] = $sales->address;
+		
+			
 					  
 
 			
@@ -457,6 +451,7 @@ class Sales extends MY_Controller {
 													<i class="fa fa-fw fa-file-pdf-o text-blue"></i>PDF
 												</a>
 											</li>';
+											
 											//<li>
 											//	<a style="cursor:pointer" title="Print POS Invoice ?" onclick="print_invoice('.$sales->id.')">
 											//		<i class="fa fa-fw fa-file-text text-blue"></i>POS Invoice
@@ -464,13 +459,15 @@ class Sales extends MY_Controller {
 											//</li>';
 
 										
-
+											if ($this->permissions('sales_add')) {
+												$str2 .= '<li>
+															<a title="Add Delivery Note" onclick="add_note('.$sales->id.')">
+																<i class="fa fa-fw fa-plus-circle text-blue"></i>Add Delivery Note
+															</a>
+														</li>';
+											}
 											if($this->permissions('sales_delete'))
-											$str2.='<li>
-												<a style="cursor:pointer" title="Delete Record ?" onclick="delete_sales_quote(\''.$sales->id.'\')">
-													<i class="fa fa-fw fa-trash text-red"></i>Delete
-												</a>
-											</li>
+											$str2.='
 											
 										</ul>
 									</div>';			
@@ -489,6 +486,21 @@ class Sales extends MY_Controller {
 		//output to json format
 		echo json_encode($output);
 	}
+	public function update_delivery_status()
+{
+    $id = $this->input->post('id');
+    $status = $this->input->post('status');
+    
+ 
+    $result = $this->sales_delivery->update_delivery_status($id, $status);
+
+    if($result) {
+        echo json_encode(array('result' => 'success'));
+    } else {
+        echo json_encode(array('result' => 'failed'));
+    }
+}
+
 	public function update_status(){
 		$this->permission_check('sales_edit');
 		$id=$this->input->post('id');
@@ -615,7 +627,7 @@ class Sales extends MY_Controller {
 		}
 		$data=$this->data;
 		$data=array_merge($data,array('sales_id'=>$id));
-		$data['page_title']=$this->lang->line('sales_delivery');
+		$data['page_title']=$this->lang->line('delivery_note');
 		$this->load->view('sal-delivery',$data);
 	}
 
@@ -626,7 +638,7 @@ class Sales extends MY_Controller {
 		}
 		$data=$this->data;
 		$data=array_merge($data,array('sales_id'=>$sales_id));
-		$data['page_title']=$this->lang->line('sales_delivery');
+		$data['page_title']=$this->lang->line('delivery_note');
 		if(get_invoice_format_id()==3){
 			$this->load->view('print-sales-delivery-3',$data);
 		}
@@ -645,7 +657,7 @@ class Sales extends MY_Controller {
 
 		$data['sales_id']=$sales_id;
 		$data=$this->data;
-		$data['page_title']=$this->lang->line('sales_delivery');
+		$data['page_title']=$this->lang->line('delivery_note');
         $data=array_merge($data,array('sales_id'=>$sales_id));
         if(get_invoice_format_id()==3){
 			$this->load->view('print-sales-delivery-3',$data);
@@ -745,9 +757,18 @@ class Sales extends MY_Controller {
 		$sales_id=$this->input->post('sales_id');
 		echo $this->sales->show_pay_now_modal($sales_id);
 	}
+	public function show_add_note_modal(){
+		$this->permission_check_with_msg('sales_view');
+		$sales_id=$this->input->post('sales_id');
+		echo $this->sales_delivery->show_add_note_modal($sales_id);
+	}
 	public function save_payment(){
 		$this->permission_check_with_msg('sales_add');
 		echo $this->sales->save_payment();
+	}
+	public function save_note(){
+		$this->permission_check_with_msg('sales_add');
+		echo $this->sales_delivery->save_note();
 	}
 	public function view_payments_modal(){
 		$this->permission_check_with_msg('sales_view');
@@ -768,7 +789,7 @@ class Sales extends MY_Controller {
 			}
 		}
 	
-		redirect('sales/viewQuotation');
+		redirect('sales/index');
         // Redirect back to the quotations list or relevant page
        
     }
@@ -785,7 +806,7 @@ class Sales extends MY_Controller {
 			}
 		}
 	
-		redirect('sales/viewQuotation');
+		redirect('sales/viewDelivery');
         // Redirect back to the quotations list or relevant page
        
     }

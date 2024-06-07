@@ -104,6 +104,98 @@ $(".add_customer").on("click",function(e){
 		//e.preventDefault
 });
 /* customers modal end */
+/* items modal start*/
+$(".add_item").on("click",function(e){
+	var base_url=$("#base_url").val().trim();
+    //Initially flag set true
+    var flag=true;
+    function check_field(id){
+	  if(!$("#"+id).val().trim() ) //Also check Others????
+	    {
+
+	        $('#'+id+'_msg').fadeIn(200).show().html('Required Field').addClass('required');
+	        $('#'+id).css({'background-color' : '#E8E2E9'});
+	        flag= false;
+	    }
+	    else
+	    {
+	         $('#'+id+'_msg').fadeOut(200).hide();
+	         $('#'+id).css({'background-color' : '#FFFFFF'});    //White color
+	    }
+	}
+    //Validate Input box or selection box should not be blank or empty
+	check_field("item_name");
+  check_field("brand_id");
+  check_field("category_id");
+  check_field("unit_id");
+  check_field("alert_qty");
+  check_field("purchase_price");
+  check_field("price");
+  check_field("sales_price");
+	//check_field("state");
+	
+	
+    if(flag==false)
+    {
+		toastr["warning"]("You have Missed Something to Fillup!");
+		return;
+    }
+    
+    var this_id=this.id;
+
+    
+
+			if(confirm("Are you Sure ?")){
+				e.preventDefault();
+				data = new FormData($('#item-form')[0]);//form name
+				/*Check XSS Code*/
+				if(!xss_validation(data)){ return false; }
+				
+				$(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+				$("#"+this_id).attr('disabled',true);  //Enable Save or Update button
+				$.ajax({
+				type: 'POST',
+				url: base_url+'items/new_item_modal',
+				data: data,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(result){
+      				//alert(result);//return;
+      				var data = jQuery.parseJSON(result);
+					if(data.result=="success")
+					{   
+						$('#item-modal').modal('toggle');
+					   
+					    //$("#amount").val(data.advance);
+					     $('#item-form')[0].reset();
+					     toastr["success"]("New Item Added!!");
+					    success.currentTime = 0;
+						success.play();
+					}
+					else if(data.result=="failed")
+					{
+					   toastr["error"]("Sorry! Failed to save Record.Try again!");
+					   failed.currentTime = 0;
+						failed.play();
+					}
+					else
+					{
+					   toastr["error"](data.result);
+					   failed.currentTime = 0;
+						failed.play();
+					}
+					$("#"+this_id).attr('disabled',false);  //Enable Save or Update button
+					$(".overlay").remove();
+
+			   }
+			   });
+		} //confirmation sure
+		
+
+		//e.preventDefault
+});
+/* items modal end */
 
 /* Suppliers modals start*/
 $(".add_supplier").on("click",function(e){
