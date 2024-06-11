@@ -197,6 +197,12 @@ class Sales extends MY_Controller {
 													<i class="fa fa-fw fa-money text-blue"></i>View Payments
 												</a>
 											</li>';
+											if($this->permissions('sales_payment_view'))
+											$str2.='<li>
+												<a title="Pdf Reciept" class="pointer" href="sales/pdf_receipt/'.$sales->id.'" >
+													<i class="fa fa-fw fa-money text-blue"></i>Pdf Reciept
+												</a>
+											</li>';
 
 											if($this->permissions('sales_payment_add'))
 											$str2.='<li>
@@ -736,6 +742,32 @@ class Sales extends MY_Controller {
 
 
 	}
+	// Controller Method
+public function pdf_receipt($sales_id) {
+    // Check user permissions
+	if(!$this->permissions('sales_add') && !$this->permissions('sales_edit')){
+		$this->show_access_denied_page();
+	}
+	$this->load->model('pdf_model');
+
+	$data['sales_id']=$sales_id;
+	$data=$this->data;
+	$data['page_title']=$this->lang->line('sales_invoice');
+	$data=array_merge($data,array('sales_id'=>$sales_id));
+	
+		$this->load->library('Pdf');
+		$this->load->view('print-sales-receipt',$data);
+
+		// Output the PDF as a download
+		$this->load->view('print-sales-receipt','D');
+	
+}
+
+	
+
+
+	
+	
 	
 	
 

@@ -35,6 +35,46 @@ th, td {
 body{
   word-wrap: break-word;
 }
+/* Style for the diagonal label */
+.diagonal-label {
+  position: absolute;
+  top: 45px;
+  right: -40px;
+  width: 200px; /* Adjust width as needed */
+  text-align: center;
+  transform: rotate(45deg);
+  background-color: red; /* Change color as needed */
+  color: white;
+  padding: 5px 0;
+  font-weight: bold;
+}
+/* Print styles */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .diagonal-label {
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .bg-danger {
+    background-color: red !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .bg-success {
+    background-color: green !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .bg-warning {
+    background-color: orange !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
 </style>
 </head>
 <body onload="window.print()"><!--  -->
@@ -127,9 +167,24 @@ body{
       $customer_state = $this->db->query("select state from db_states where id='$customer_state'")->row()->state;  
     }
     
+$payment_status_class = '';
+    $payment_status_text = '';
 
+    if ($payment_status === 'Unpaid') {
+      $payment_status_class = 'bg-danger'; // Red color for unpaid
+      $payment_status_text = 'Unpaid';
+    } elseif ($payment_status === 'Paid') {
+      $payment_status_class = 'bg-success'; // Green color for paid
+      $payment_status_text = 'Paid';
+    } elseif ($payment_status === 'Partial') {
+      $payment_status_class = 'bg-warning'; // Orange color for partially paid
+      $payment_status_text = 'Partial';
+    } else {
+      // Handle other payment statuses here
+    }
     ?>
-
+    
+    <div class="diagonal-label <?= $payment_status_class; ?>"><?= $payment_status_text; ?></div>
 <table align="center" width="100%" height='100%' style="border:1px solid;">
     <thead>
       <tr>
@@ -150,7 +205,7 @@ body{
                   <?php echo (!empty(trim($company_gst_no))) ? $this->lang->line('gst_number').": ".$company_gst_no."<br>" : '';?>
                   <?php echo (!empty(trim($company_vat_no))) ? $this->lang->line('vat_number').": ".$company_vat_no."<br>" : '';?>
                 </th>
-              <th colspan="6" style="text-align: right;">
+              <th colspan="6" style="text-align: right; padding-right: 60px;">
                 <img src="<?= base_url('uploads/company/'.$company_logo);?>" width='auto' height='150px'>
               </th>
               

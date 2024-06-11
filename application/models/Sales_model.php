@@ -1149,4 +1149,37 @@ class Sales_model extends CI_Model {
         return $sales_init . str_pad($max_id, 4, '0', STR_PAD_LEFT);
 		
     }
+	public function get_sales_data_with_customer($sales_id) {
+        // Fetch sales data from the database based on the sales ID
+        $this->db->where('id', $sales_id);
+        $query = $this->db->get('db_sales');
+        $sales_data = $query->row();
+
+        if ($sales_data) {
+            // Fetch customer data based on the customer ID from the sales data
+            $this->db->where('id', $sales_data->customer_id);
+            $query = $this->db->get('db_customers');
+            $customer_data = $query->row();
+
+            if ($customer_data) {
+                // Fetch country and state names
+                if (!empty($customer_data->country_id)) {
+                    $country_query = $this->db->query("SELECT country FROM db_country WHERE id = '$customer_data->country_id'");
+                    $customer_data->customer_country = $country_query->row()->country;
+                }
+
+                if (!empty($customer_data->state_id)) {
+                    $state_query = $this->db->query("SELECT state FROM db_states WHERE id = '$customer_data->state_id'");
+                    $customer_data->customer_state = $state_query->row()->state;
+                }
+
+                return array(
+                    'sales_data' => $sales_data,
+                    'customer_data' => $customer_data
+                );
+            }
+        }
+
+        return false; // Return false if no data found
+    }
 }

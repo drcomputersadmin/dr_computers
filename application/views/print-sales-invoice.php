@@ -79,7 +79,7 @@ a.city,s.state,c.country,a.tax_number as vat_no,
                        ");
 
 $client=$q3->row();
-
+$payment_status=$client->payment_status;
 if(!empty($customer_country)){
   $customer_country = $this->db->query("select country from db_country where id='$customer_country'")->row()->country;  
 }
@@ -128,6 +128,24 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // add a page
 $pdf->AddPage();
+// Determine payment status class and text
+$payment_status_class = '';
+$payment_status_text = '';
+
+if ($client->payment_status === 'Unpaid') {
+    $payment_status_class = 'bg-danger'; // Red color for unpaid
+    $payment_status_text = 'Unpaid';
+} elseif ($client->payment_status === 'Paid') {
+    $payment_status_class = 'bg-success'; // Green color for paid
+    $payment_status_text = 'Paid';
+} elseif ($client->payment_status === 'Partial') {
+    $payment_status_class = 'bg-warning'; // Orange color for partially paid
+    $payment_status_text = 'Partial';
+}
+
+// Add diagonal label
+// Add diagonal label
+
 
 /////////
 $template_id = $pdf->startTemplate(150, 100, true);
@@ -143,6 +161,20 @@ $pdf->SetAlpha(0.1);
 $pdf->printTemplate($template_id, 20, 15, 180, 220, '', '', true);
 $pdf->SetAlpha(1);
 ///////
+// Add diagonal label
+// Add diagonal label
+$template_id = $pdf->startTemplate(150, 100, true);
+$pdf->StartTransform();
+$pdf->StopTransform();
+$pdf->Rotate(14, 250, 200);
+$pdf->SetXY($pdf->GetPageWidth() - 400, 0); // Adjust X and Y coordinates
+$pdf->SetFont('times', '', 10);
+$pdf->SetTextColor(255, 0, 0); // Red color
+$pdf->Cell(0, 0, '--------- ' .$payment_status, 0, 0, 'C', false, '', 0, false, 'T', 'M');
+$pdf->endTemplate();
+$pdf->SetAlpha(0.1);
+$pdf->printTemplate($template_id, 20, 15, 180, 220, '', '', true);
+$pdf->SetAlpha(1);
 
 $pdf->SetFont('times', '', 10);
 
@@ -150,12 +182,17 @@ $html = '<table style=" solid #0000">
           <tr Style="text-decoration: underline; ">
             <td>Seller</td>
             <td>Customer</td>
+           
             <td>Details</td>
+              <td>Status</td>
           </tr>
           <tr style="font-size: 15px;">
             <td><b>'.$domain->company_name.'</b></td>
+    
             <td><b>'.$client->customer_name.'</b></td>
-            <td><b>Invoice Number :'.$client->sales_code.'</b></td></tr>
+              
+            <td><b>Invoice Number :'.$client->sales_code.'</b></td>
+             <td><b>'.$client->payment_status.'</b></td></tr>
           <tr>
             <td>'.$domain->address.'<br/>'.
               $domain->city.'<br/>'.
