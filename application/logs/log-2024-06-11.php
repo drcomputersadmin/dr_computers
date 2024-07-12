@@ -1721,3 +1721,210 @@ ERROR - 2024-06-11 16:01:30 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-06-11 16:01:30 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-06-11 16:01:30 --> 404 Page Not Found: Theme/sound
 ERROR - 2024-06-11 16:01:30 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined property: Login::$data C:\xampp\htdocs\DRC_Accounting\application\controllers\Login.php 16
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 15
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 23
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21425
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21435
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21469
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21470
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21471
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21482
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21484
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21486
+ERROR - 2024-06-11 17:55:45 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21522
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Dist/css
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Bootstrap/css
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Plugins/jQuery
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Bootstrap/js
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-11 17:55:45 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 17:55:46 --> 404 Page Not Found: Img/fav.png
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined property: Login::$data C:\xampp\htdocs\DRC_Accounting\application\controllers\Login.php 16
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 15
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 23
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21425
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $base_url C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21435
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21469
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21470
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21471
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21482
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21484
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21486
+ERROR - 2024-06-11 20:01:38 --> Severity: Warning --> Undefined variable $theme_link C:\xampp\htdocs\DRC_Accounting\application\views\login.php 21522
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Dist/css
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Bootstrap/css
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Plugins/jQuery
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Bootstrap/js
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Plugins/iCheck
+ERROR - 2024-06-11 20:01:38 --> 404 Page Not Found: Assets/js
+ERROR - 2024-06-11 20:01:39 --> 404 Page Not Found: Img/fav.png
+ERROR - 2024-06-11 20:01:45 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:45 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:45 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:45 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:46 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:46 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:50 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:50 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:50 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:01:50 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 18:01:51 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 423
+ERROR - 2024-06-11 18:01:51 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 423
+ERROR - 2024-06-11 18:01:51 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 423
+ERROR - 2024-06-11 18:01:51 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 423
+ERROR - 2024-06-11 18:01:51 --> Severity: Warning --> Undefined property: stdClass::$pos C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 423
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 95
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 100
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "customer_name" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 157
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 158
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "address" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 166
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "city" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 167
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "state" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 168
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "country" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 168
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "mobile" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 169
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "email" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 170
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "vat_no" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 171
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "sales_date" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 174
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "created_time" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 174
+ERROR - 2024-06-11 18:01:54 --> Severity: Warning --> Attempt to read property "reference_no" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-quote.php 175
+ERROR - 2024-06-11 20:02:18 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:02:18 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:02:18 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 20:02:18 --> 404 Page Not Found: Theme/sound
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:18 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:24 --> Severity: Warning --> Undefined property: stdClass::$payment_status C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 65
+ERROR - 2024-06-11 18:02:24 --> Severity: Warning --> Undefined property: stdClass::$vat_no C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 167
+ERROR - 2024-06-11 18:02:24 --> Severity: Warning --> Undefined property: stdClass::$sales_date C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 170
+ERROR - 2024-06-11 18:02:24 --> Severity: Warning --> Undefined property: stdClass::$reference_no C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 171
+ERROR - 2024-06-11 18:02:50 --> Severity: Warning --> Undefined property: stdClass::$payment_status C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 65
+ERROR - 2024-06-11 18:02:50 --> Severity: Warning --> Undefined property: stdClass::$vat_no C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 167
+ERROR - 2024-06-11 18:02:50 --> Severity: Warning --> Undefined property: stdClass::$sales_date C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 170
+ERROR - 2024-06-11 18:02:50 --> Severity: Warning --> Undefined property: stdClass::$reference_no C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 171
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_a316c236c0604eb22c42b13de10e60f8_imgmask_alpha_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_a316c236c0604eb22c42b13de10e60f8_imgmask_plain_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> Undefined property: stdClass::$payment_status C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 65
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> Undefined property: stdClass::$vat_no C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 167
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> Undefined property: stdClass::$sales_date C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 170
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> Undefined property: stdClass::$reference_no C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-receipt.php 171
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_65d0bf8644103ccf2d01e626b7151b0a_imgmask_alpha_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:02:51 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_65d0bf8644103ccf2d01e626b7151b0a_imgmask_plain_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:02:56 --> Severity: Warning --> Undefined property: stdClass::$transferred_to_delivery_note C:\xampp\htdocs\DRC_Accounting\application\controllers\Sales.php 182
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $tot_qty C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 259
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $total_discount C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 260
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $tot_tax_amt C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 261
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $tot_total_cost C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 262
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $key C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 265
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_e044cb286fc6889417a6c4a24b189675_imgmask_alpha_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_e044cb286fc6889417a6c4a24b189675_imgmask_plain_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $tot_qty C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 259
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $total_discount C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 260
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $tot_tax_amt C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 261
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $tot_total_cost C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 262
+ERROR - 2024-06-11 18:03:00 --> Severity: Warning --> Undefined variable $key C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 265
+ERROR - 2024-06-11 18:03:01 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_3fd6c2db97f38e398ee0b8f733b29b22_imgmask_alpha_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:01 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_3fd6c2db97f38e398ee0b8f733b29b22_imgmask_plain_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 82
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 95
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 100
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 135
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 138
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 141
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "customer_name" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 192
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 194
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 195
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "address" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 203
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "city" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 204
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "state" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 205
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "country" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 205
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "mobile" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 206
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "email" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 207
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "vat_no" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 208
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_date" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 211
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "created_time" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 211
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "reference_no" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 212
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Undefined variable $tot_qty C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 259
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Undefined variable $total_discount C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 260
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Undefined variable $tot_tax_amt C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 261
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Undefined variable $tot_total_cost C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 262
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Undefined variable $key C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 265
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "subtotal" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 273
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "grand_total" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 283
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "other_charges_input" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 284
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "other_charges_tax_id" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 285
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "other_charges_amt" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 286
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "paid_amount" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 287
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "discount_to_all_input" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 288
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "discount_to_all_type" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 289
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "tot_discount_to_all_amt" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 291
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "round_off" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 292
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 293
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "created_by" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 370
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 378
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_89c9bf4bb1f3b54f4ced386ba7e87cdf_imgmask_alpha_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_89c9bf4bb1f3b54f4ced386ba7e87cdf_imgmask_plain_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 82
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 95
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 100
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 135
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 138
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 141
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "customer_name" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 192
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 194
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 195
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "address" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 203
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "city" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 204
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "state" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 205
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "country" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 205
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "mobile" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 206
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "email" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 207
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "vat_no" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 208
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "sales_date" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 211
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "created_time" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 211
+ERROR - 2024-06-11 18:03:09 --> Severity: Warning --> Attempt to read property "reference_no" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 212
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Undefined variable $tot_qty C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 259
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Undefined variable $total_discount C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 260
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Undefined variable $tot_tax_amt C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 261
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Undefined variable $tot_total_cost C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 262
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Undefined variable $key C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 265
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "subtotal" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 273
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "grand_total" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 283
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "other_charges_input" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 284
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "other_charges_tax_id" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 285
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "other_charges_amt" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 286
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "paid_amount" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 287
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "discount_to_all_input" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 288
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "discount_to_all_type" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 289
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "tot_discount_to_all_amt" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 291
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "round_off" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 292
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "payment_status" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 293
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "created_by" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 370
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> Attempt to read property "sales_code" on null C:\xampp\htdocs\DRC_Accounting\application\views\print-sales-invoice.php 378
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_dc86fed8354b05515889a321a59222fb_imgmask_alpha_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801
+ERROR - 2024-06-11 18:03:10 --> Severity: Warning --> unlink(C:\xampp\tmp/__tcpdf_dc86fed8354b05515889a321a59222fb_imgmask_plain_71c25deda1684699fb647241f816ea23): No such file or directory C:\xampp\htdocs\DRC_Accounting\application\libraries\tcpdf\tcpdf.php 7801

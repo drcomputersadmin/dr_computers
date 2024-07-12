@@ -34,17 +34,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 //************************************
 $q1=$this->db->query("select * from db_company where id=1 and status=1");
 $domain=$q1->row();
-/*$company_name=$res1->company_name;
-$company_mobile=$res1->mobile;
-$company_phone=$res1->phone;
-$company_email=$res1->email;
-$company_country=$res1->country;
-$company_state=$res1->state;
-$company_city=$res1->city;
-$company_address=$res1->address;
-$company_gst_no=$res1->gst_no;
-$company_vat_no=$res1->vat_no;
-$company_logo=$res1->company_logo;*/
+
 
 $q4=$this->db->query("select sales_invoice_footer_text from db_sitesettings where id=1");
 $q5=$this->db->query("select sales_terms_and_conditions from db_company where id=1");
@@ -72,14 +62,14 @@ a.city,s.state,c.country,a.tax_number as vat_no,
                        b.payment_status
 
                        FROM db_customers a,
-                       db_sales b,db_states s,db_country c
+                       db_delivery_notes b,db_states s,db_country c
                        WHERE 
                        a.`id`=b.`customer_id` AND s.id=a.state_id AND c.id=a.country_id AND
                        b.`id`='$sales_id' 
                        ");
 
 $client=$q3->row();
-$payment_status=$client->payment_status;
+
 if(!empty($customer_country)){
   $customer_country = $this->db->query("select country from db_country where id='$customer_country'")->row()->country;  
 }
@@ -93,11 +83,11 @@ if(!empty($customer_state)){
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Riyas Sayir');
 $pdf->SetTitle($client->sales_code);
-$pdf->SetSubject('Tax Invoice');
+$pdf->SetSubject('Quotation');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-$pdf->SetHeaderData('', 0, 'Tax Invoice', $client->sales_code);
+$pdf->SetHeaderData('', 0, 'Quotation', $client->sales_code);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -128,24 +118,6 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 // add a page
 $pdf->AddPage();
-// Determine payment status class and text
-$payment_status_class = '';
-$payment_status_text = '';
-
-if ($client->payment_status === 'Unpaid') {
-    $payment_status_class = 'bg-danger'; // Red color for unpaid
-    $payment_status_text = 'Unpaid';
-} elseif ($client->payment_status === 'Paid') {
-    $payment_status_class = 'bg-success'; // Green color for paid
-    $payment_status_text = 'Paid';
-} elseif ($client->payment_status === 'Partial') {
-    $payment_status_class = 'bg-warning'; // Orange color for partially paid
-    $payment_status_text = 'Partial';
-}
-
-// Add diagonal label
-// Add diagonal label
-
 
 /////////
 $template_id = $pdf->startTemplate(150, 100, true);
@@ -161,20 +133,6 @@ $pdf->SetAlpha(0.1);
 $pdf->printTemplate($template_id, 20, 15, 180, 220, '', '', true);
 $pdf->SetAlpha(1);
 ///////
-// Add diagonal label
-// Add diagonal label
-// $template_id = $pdf->startTemplate(150, 100, true);
-// $pdf->StartTransform();
-// $pdf->StopTransform();
-// $pdf->Rotate(14, 250, 200);
-// $pdf->SetXY($pdf->GetPageWidth() - 400, 0); // Adjust X and Y coordinates
-// $pdf->SetFont('times', '', 10);
-// $pdf->SetTextColor(255, 0, 0); // Red color
-// $pdf->Cell(0, 0, '--------- ' .$payment_status, 0, 0, 'C', false, '', 0, false, 'T', 'M');
-// $pdf->endTemplate();
-// $pdf->SetAlpha(0.1);
-// $pdf->printTemplate($template_id, 20, 15, 180, 220, '', '', true);
-// $pdf->SetAlpha(1);
 
 $pdf->SetFont('times', '', 10);
 
@@ -182,17 +140,12 @@ $html = '<table style=" solid #0000">
           <tr Style="text-decoration: underline; ">
             <td>Seller</td>
             <td>Customer</td>
-           
             <td>Details</td>
-             
           </tr>
           <tr style="font-size: 15px;">
             <td><b>'.$domain->company_name.'</b></td>
-    
             <td><b>'.$client->customer_name.'</b></td>
-              
-            <td><b>Invoice Number :'.$client->sales_code.'</b></td>
-           </tr>
+            <td><b>Quotation Number :'.$client->sales_code.'</b></td></tr>
           <tr>
             <td>'.$domain->address.'<br/>'.
               $domain->city.'<br/>'.
@@ -208,7 +161,7 @@ $html = '<table style=" solid #0000">
             'TRN : '.$client->vat_no.'</td><td>';
 
   $html = $html.'<br/><br/><br/>
-              Invoice Date : '.$client->sales_date.' '.$client->created_time.'<br/>
+              Quotation Date : '.$client->sales_date.' '.$client->created_time.'<br/>
               Reference Number : '.$client->reference_no.'<br/>
                 </td></tr></table>';
 
@@ -218,25 +171,25 @@ $pdf->writeHTML($html, true, false, true, false, '');
 
 // ---------------------------------------------------------
 
-$q2=$this->db->query("SELECT c.item_name, a.sales_qty,
+$q2=$this->db->query("SELECT c.item_name, a.sales_qty, c.item_code,
 a.price_per_unit, b.tax,b.tax_name,a.tax_amt,
-a.discount_input,a.discount_amt, a.unit_total_cost,
+a.discount_input,a.discount_amt, a.unit_total_cost,a.delivery_qty,
 a.total_cost
 FROM 
-db_salesitems AS a,db_tax AS b,db_items AS c 
+db_delivery_note_items AS a,db_tax AS b,db_items AS c 
 WHERE 
 c.id=a.item_id AND b.id=a.tax_id AND a.sales_id='$sales_id'");
 
 $html = '<table width="100%"  style="padding: 3px; border: 1px solid #A9A9A9;" >
             <thead >
               <tr bgcolor="#0099ff" style="color: #ffffff;">
-                <th width="6%" align="center" style="border: 1px solid #dddddd;">Item</th>
-                <th width="44%" align="center" style="border: 1px solid #dddddd;">Name</th>
-                <th width="10%" align="center" style="border: 1px solid #dddddd;">Quantity</th>
-                <th width="10%" align="center" style="border: 1px solid #dddddd;">Unit Price</th>
-                <th width="10%" align="center" style="border: 1px solid #dddddd;">Discount</th>
-                <th width="10%" align="center" style="border: 1px solid #dddddd;">VAT</th>
-                <th width="10%" align="center" style="border: 1px solid #dddddd;">Total</th>
+               <th width="6%" align="center" style="border: 1px solid #dddddd;">#</th>
+                <th width="14%" align="center" style="border: 1px solid #dddddd;">Item Code</th>
+                  <th width="60%" align="center" style="border: 1px solid #dddddd;">Item Name</th>
+             
+                <th width="20%" align="center" style="border: 1px solid #dddddd;">Quantity</th>
+              
+               
               </tr>
             </thead>';
 
@@ -246,12 +199,10 @@ $html = '<table width="100%"  style="padding: 3px; border: 1px solid #A9A9A9;" >
 
 $html = $html.'<tr>
             <td width="6%" align="center" style="border: 1px solid #dddddd;">'.$index.'</td>
-            <td width="44%" style="border: 1px solid #dddddd;">'.$item->item_name.'</td>
-            <td width="10%" align="center" style="border: 1px solid #dddddd;">'.$item->sales_qty.'</td>
-            <td width="10%" align="center" style="border: 1px solid #dddddd;">'.$item->price_per_unit.'</td>
-            <td width="10%" align="center" style="border: 1px solid #dddddd;">'.$item->discount_amt.'</td>
-            <td width="10%" align="center" style="border: 1px solid #dddddd;">'.$item->tax_amt.'</td>
-            <td width="10%" align="center" style="border: 1px solid #dddddd;">'.$item->total_cost.'</td>
+            <td width="14%" style="border: 1px solid #dddddd;">'.$item->item_code.'</td>
+            <td width="60%" align="center" style="border: 1px solid #dddddd;">'.$item->item_name.'</td>
+            <td width="20%" align="center" style="border: 1px solid #dddddd;">'.$item->delivery_qty.'</td>
+           
           </tr>';
 
     $index++;
@@ -261,23 +212,10 @@ $html = $html.'<tr>
     $tot_tax_amt +=$item->tax_amt;
     $tot_total_cost +=$item->total_cost;
   }
-$html = $html.'<tr style="font-weight:bold">
-            <td colspan="2"  align="center" style="border: 1px solid #dddddd;">'.$key.'</td>
-            <td  align="center" style="border: 1px solid #dddddd;">'.$tot_qty.'</td>
-            <td  align="center" style="border: 1px solid #dddddd;"></td>
-            <td  align="center" style="border: 1px solid #dddddd;">'.number_format($total_discount, 2, '.', '').'</td>
-            <td  align="center" style="border: 1px solid #dddddd;">'.number_format($tot_tax_amt, 2, '.', '').'</td>
-            <td  align="center" style="border: 1px solid #dddddd;">'.number_format($tot_total_cost, 2, '.', '').'</td>
-          </tr>';
+
        
-$subtotal=$client->subtotal;
-if (strlen($subtotal) !== 0){
-$html = $html.'<tr>
-    <td colspan="4"></td>
-    <td colspan="2" style="font-weight:bold; border: 1px solid #dddddd;">Sub Total : </td>
-    <td  align="center" style="border: 1px solid #dddddd;">'.$subtotal.'</td>
-</tr>';
-}
+
+
 
 
 $grand_total=$client->grand_total;

@@ -18,9 +18,9 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url().'theme/'; ?>dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="<?php echo $theme_link; ?>dist/css/AdminLTE.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="<?php echo base_url().'theme/'; ?>plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="<?php echo $theme_link; ?>plugins/iCheck/square/blue.css">
 
   <title>
   Dr. Computers
@@ -21414,7 +21414,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-            <div class="card card-plain mt-1">
+            <div class="card card-plain mt-8">
             <?php 
   //Find Logo Path
     $logo=$this->db->query("select logo from db_sitesettings")->row()->logo;
@@ -21422,10 +21422,10 @@
   <div class="login-logo">
     
     <a href="#"><b>
-      <img src="<?php echo $base_url; ?>uploads/<?= $logo;?>" width="auto" height="100px">
+      <img src="<?php echo $base_url; ?>uploads/<?= $logo;?>" width="56%" height="180px">
     </b></a>
   </div>
-              <div class="card-header pb-0 text-left bg-transparent" style="padding-top: 0 !important;">
+              <div class="card-header pb-0 text-left bg-transparent">
                 <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
                 <p class="mb-0">Enter your username and password to sign in</p>
                 <div class="text-danger tex-center"><?php echo $this->session->flashdata('failed'); ?></div>
@@ -21452,27 +21452,12 @@
                 </form>
               </div>
             </div>
-            <style>
-              .d-flex.flex-wrap.authorized-btn {
-  justify-content: space-around; /* Centers buttons horizontally */
-}
-              </style>
-             <div class="d-flex flex-wrap authorized-btn">
-        <button class="btn btn-secondary" type="button" id="super_admin_login" data-username="admin" data-password="1234567">Super Admin Login</button>
-        <button class="btn btn-secondary" type="button" id="company_login" data-username="company@example.com" data-password="1234">Company Login</button>
-        <div class="text-center mx-auto">
-            <button class="btn btn-secondary" type="button" id="hr_login" data-username="hr@example.com" data-password="1234">HR Login</button>
-        </div>
-    </div>
           </div>
-          
           <div class="col-md-6">
             <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
               <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('<?= base_url('uploads/bg/curved6.jpg') ?>')"></div>
             </div>
           </div>
-         
-
         </div>
       </div>
     </div>
@@ -21481,9 +21466,9 @@
   
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Core JS Files   -->
-  <script src="<?php echo base_url().'theme/'; ?>assets/js/core/popper.min.js"></script>
-  <script src="<?php echo base_url().'theme/'; ?>assets/js/core/bootstrap.min.js"></script>
-  <script src="<?php echo base_url().'theme/'; ?>assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="<?php echo $theme_link; ?>assets/js/core/popper.min.js"></script>
+  <script src="<?php echo $theme_link; ?>assets/js/core/bootstrap.min.js"></script>
+  <script src="<?php echo $theme_link; ?>assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -21494,13 +21479,11 @@
     }
   </script>
 <!-- jQuery 2.2.3 -->
-<script src="<?php echo base_url().'theme/'; ?>plugins/jQuery/jquery-2.2.3.min.js"></script>
-
+<script src="<?php echo $theme_link; ?>plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="<?php echo base_url().'theme/'; ?>bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo $theme_link; ?>bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="<?php echo base_url().'theme/'; ?>plugins/iCheck/icheck.min.js"></script>
-
+<script src="<?php echo $theme_link; ?>plugins/iCheck/icheck.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({
@@ -21509,24 +21492,8 @@
       increaseArea: '20%' // optional
     });
   });
-  $(document).ready(function() {
-            $('.authorized-btn button').click(function() {
-                var username = $(this).data('username');
-                var password = $(this).data('password');
-                
-                // Assuming there are inputs with IDs 'email' and 'password'
-                $('#username').val(username);
-                $('#pass').val(password);
-
-                // Displaying "Hello" message for testing
-               
-            });
-        });
- 
-
 </script>
 <script type="text/javascript" >
-  
 $(function($) { // this script needs to be loaded on every page where an ajax POST may happen
     $.ajaxSetup({ data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>' }  }); });
 </script>
@@ -21547,15 +21514,12 @@ $(function($) { // this script needs to be loaded on every page where an ajax PO
     $("#pass").val("123456");
     $("#login").submit();
   });
-
-  
-
 </script>
 <?php } ?>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="<?php echo base_url().'theme/'; ?>assets/js/soft-ui-dashboard.min.js?v=1.0.2"></script>
+  <script src="<?php echo $theme_link; ?>assets/js/soft-ui-dashboard.min.js?v=1.0.2"></script>
 </body>
 
 </html>

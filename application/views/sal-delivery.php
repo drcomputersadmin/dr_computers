@@ -278,7 +278,7 @@ if ($q2->num_rows() == 0) {
          
 
 
-          <a href="<?php echo $base_url; ?>sales/print_quotation/<?php echo  $sales_id ?>" target="_blank" class="btn btn-warning">
+          <a href="<?php echo $base_url; ?>sales/print_delivery/<?php echo  $sales_id ?>" target="_blank" class="btn btn-warning">
             <i class="fa fa-print"></i> 
           Print
         </a>
@@ -289,7 +289,7 @@ if ($q2->num_rows() == 0) {
         </a> -->
 
 
-        <a href="<?php echo $base_url; ?>sales/pdf_quote/<?php echo  $sales_id ?>" target="_blank" class="btn btn-primary">
+        <a href="<?php echo $base_url; ?>sales/pdf_delivery/<?php echo  $sales_id ?>" target="_blank" class="btn btn-primary">
             <i class="fa fa-file-pdf-o"></i> 
           PDF
         </a>
@@ -325,6 +325,6 @@ if ($q2->num_rows() == 0) {
 }
 </script>
 <!-- Make sidebar menu hughlighter/selector -->
-<script>$(".sales-quote-list-active-li").addClass("active");</script>
+<script>$(".sales-delivery-list-active-li").addClass("active");</script>
 </body>
 </html>

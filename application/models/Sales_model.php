@@ -5,7 +5,7 @@ class Sales_model extends CI_Model {
 
 	//Datatable start
 	var $table = 'db_sales as a';
-	var $column_order = array( 'a.return_bit','a.id','a.sales_date','a.sales_code','a.reference_no','a.grand_total','a.payment_status','a.created_by','b.customer_name','a.paid_amount','a.sales_status','a.pos'); //set column field database for datatable orderable
+	var $column_order = array( 'a.return_bit','a.id','a.sales_date','a.sales_code','a.reference_no','a.grand_total','a.payment_status','a.created_by','b.customer_name','a.paid_amount','a.sales_status','a.transferred_to_delivery_note','a.pos'); //set column field database for datatable orderable
 	var $column_search = array('sales_due','a.return_bit','a.id','a.sales_date','a.sales_code','a.reference_no','a.grand_total','a.payment_status','a.created_by','b.customer_name','a.paid_amount','a.sales_status','a.pos'); //set column field database for datatable searchable 
 	var $order = array('a.id' => 'desc'); // default order  
 
@@ -1048,6 +1048,7 @@ class Sales_model extends CI_Model {
 	}
 	//convert quote to invoice
 	public function convert_to_delivery_note($sales_id) {
+		extract($this->xss_html_filter(array_merge($this->data,$_POST,$_GET)));
         // Start transaction
 		$query =$this->db->select('site_name,version,language_id,timezone,time_format,date_format')->where('id',1)->get('db_sitesettings');
 		date_default_timezone_set(trim($query->row()->timezone));
@@ -1076,16 +1077,16 @@ class Sales_model extends CI_Model {
 				'contact_person'       =>$customer->address,
 				'contact_phone'       =>$customer->phone,
 				'delivery_note'  => " ",
-                'created_date'          => date('Y-m-d'),
-                'created_time'          => $time_format,
-                'created_by'            => $this->session->userdata('inv_username'),
-                'system_ip'             => $_SERVER['REMOTE_ADDR'],
-                'system_name'           => gethostbyaddr($_SERVER['REMOTE_ADDR']),
-				// 'created_date' 		=> $CUR_DATE,
-				// 'created_time' 		=> $CUR_TIME,
-				// 'created_by' 		=> $CUR_USERNAME,
-				// 'system_ip' 		=> $SYSTEM_IP,
-				// 'system_name' 		=> $SYSTEM_NAME,
+            //     'created_date'          => date('Y-m-d'),
+            //     'created_time'          => $time_format,
+            //   'created_by' 		=> $CUR_USERNAME,
+            //     'system_ip'             => $_SERVER['REMOTE_ADDR'],
+            //     'system_name'           => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+				'created_date' 		=> $CUR_DATE,
+				'created_time' 		=> $CUR_TIME,
+				'created_by' 		=> $CUR_USERNAME,
+				'system_ip' 		=> $SYSTEM_IP,
+				'system_name' 		=> $SYSTEM_NAME,
                 'status'                => 1,
 				
              ];
@@ -1103,11 +1104,11 @@ class Sales_model extends CI_Model {
             // Insert the quotation items as invoice items
             foreach ($sale_items as $item) {
                 $invoice_item_data = [
-                    'delivery_note_id'         => $invoice_id,
+                    'delivery_note_id' => $invoice_id,
                   
                     'item_id'          => $item->item_id,
                     'description'      => $item->description,
-                    'delivery_qty'        => $item->sales_qty,
+                    'delivery_qty'     => $item->sales_qty,
                     'price_per_unit'   => $item->price_per_unit,
                     'tax_type'         => $item->tax_type,
                     'tax_id'           => $item->tax_id,
@@ -1145,7 +1146,7 @@ class Sales_model extends CI_Model {
     private function generate_delivery_code() {
         // Generate a unique sales code
         $sales_init = "DN";
-        $max_id = $this->db->select_max('id')->get('db_sales')->row()->id + 1;
+        $max_id = $this->db->select_max('id')->get('db_delivery_notes')->row()->id + 1;
         return $sales_init . str_pad($max_id, 4, '0', STR_PAD_LEFT);
 		
     }

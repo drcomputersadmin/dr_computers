@@ -42,7 +42,7 @@ padding-right: 2px;
       $discount_input = ($discount_input==0) ? '' : $discount_input;
     }
     else{
-      $q2 = $this->db->query("select * from db_sales where id=$sales_id");
+      $q2 = $this->db->query("select * from db_sales_quote where id=$sales_id");
       $customer_id=$q2->row()->customer_id;
       $sales_date=show_date($q2->row()->sales_date);
       $sales_status=$q2->row()->sales_status;
@@ -54,8 +54,10 @@ padding-right: 2px;
       $other_charges_tax_id=$q2->row()->other_charges_tax_id;
       $sales_note=$q2->row()->sales_note;
 
-      $items_count = $this->db->query("select count(*) as items_count from db_salesitems where sales_id=$sales_id")->row()->items_count;
-    }
+      $items_count = $this->db->query("select count(*) as items_count from db_quoteitems where sales_id=$sales_id")->row()->items_count;
+   
+  
+   }
     
     ?>
 
@@ -65,6 +67,7 @@ padding-right: 2px;
   <div class="content-wrapper">
     <!-- **********************MODALS***************** -->
     <?php include"modals/modal_customer.php"; ?>
+    <?php include"modals/modal_item.php"; ?>
     <?php include"modals/modal_pos_sales_item.php"; ?>
     <!-- **********************MODALS END***************** -->
     <!-- Content Header (Page header) -->
@@ -206,7 +209,13 @@ padding-right: 2px;
                                           <div class="input-group">
                                                 <span class="input-group-addon" title="Select Items"><i class="fa fa-barcode"></i></span>
                                                  <input type="text" class="form-control " placeholder="Item name/Barcode/Itemcode" id="item_search">
-                                              </div>
+                                             
+                                                 <span class="input-group-btn">
+                <button class="btn btn-default" type="button" data-toggle="modal" data-target="#item-modal" title="New Item">
+                    <i class="fa fa-plus-square text-primary fa-lg"></i> 
+                </button>
+            </span>
+                                                </div>
                                         </div>
                                       </div>
                                       <div class="box-body">
@@ -506,6 +515,7 @@ padding-right: 2px;
 <?php include"comman/code_js_form.php"; ?>
 
 <script src="<?php echo $theme_link; ?>js/modals.js"></script>
+<script src="<?php echo $theme_link; ?>js/items.js"></script>
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
@@ -843,7 +853,7 @@ padding-right: 2px;
                 var base_url='<?= base_url();?>';
                 var sales_id='<?= $sales_id;?>';
                 $(".box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
-                $.post(base_url+"sales/return_sales_list/"+sales_id,{},function(result){
+                $.post(base_url+"sales/return_sales_quote_list/"+sales_id,{},function(result){
                   //alert(result);
                   $('#sales_table tbody').append(result);
                   $("#hidden_rowcount").val(parseFloat(<?=$items_count;?>)+1);

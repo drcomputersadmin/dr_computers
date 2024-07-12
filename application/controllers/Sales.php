@@ -131,7 +131,7 @@ class Sales extends MY_Controller {
 			$info = (!empty($sales->return_bit)) ? "\n<span class='label label-danger' style='cursor:pointer'><i class='fa fa-fw fa-undo'></i>Return Raised</span>" : '';
 
 			$row[] = $sales->sales_code.$info;
-			$row[] = $sales->sales_status;
+			// $row[] = $sales->sales_status;
 			$row[] = $sales->reference_no;
 			$row[] = $sales->customer_name;
 			//$row[] = $sales->warehouse_name;
@@ -149,6 +149,11 @@ class Sales extends MY_Controller {
 			$row[] = $str;
 			$row[] = ucfirst($sales->created_by);
 
+			$status_text = $sales->transferred_to_delivery_note ? 'Transferred to Delivery Note' : 'Pending';
+			$status_color = $sales->transferred_to_delivery_note ? 'success' : 'warning';
+			
+			$row[] = '<span class="label label-' . $status_color . '">' . $status_text . '</span>';
+
 					 if($sales->pos ==1):
 					 	$str1='pos/edit/';
 					 else:
@@ -160,12 +165,16 @@ class Sales extends MY_Controller {
 											Action <span class="caret"></span>
 										</a>
 										<ul role="menu" class="dropdown-menu dropdown-light pull-right">';
-											if($this->permissions('sales_view'))
-											$str2.='<li>
-												<a title="View Invoice" href="sales/invoice/'.$sales->id.'" >
-													<i class="fa fa-fw fa-eye text-blue"></i>View sales
-												</a>
-											</li>';
+										if ($this->permissions('sales_view')) {
+											$base_url = base_url(); // Or use site_url() if routes are properly configured
+											$url = $base_url . 'sales/invoice/' . $sales->id;
+											$str2 .= '<li>
+														<a title="View Invoice" href="' . $url . '" >
+															<i class="fa fa-fw fa-eye text-blue"></i> View sales
+														</a>
+													  </li>';
+										}
+										
 
 											if($this->permissions('sales_edit'))
 											$str2.='<li>
@@ -197,12 +206,20 @@ class Sales extends MY_Controller {
 													<i class="fa fa-fw fa-money text-blue"></i>View Payments
 												</a>
 											</li>';
-											if($this->permissions('sales_payment_view'))
-											$str2.='<li>
-												<a title="Pdf Reciept" class="pointer" href="sales/pdf_receipt/'.$sales->id.'" >
-													<i class="fa fa-fw fa-money text-blue"></i>Pdf Reciept
-												</a>
-											</li>';
+											// if($this->permissions('sales_payment_view'))
+											// $str2.='<li>
+											// 	<a title="Pdf Reciept" class="pointer" target="_blank" href="sales/pdf_receipt/'.$sales->id.'" >
+											// 		<i class="fa fa-fw fa-money text-blue"></i>Pdf Reciept
+											// 	</a>
+											// </li>';
+											if ($this->permissions('sales_payment_view')) {
+												$pdfReceiptUrl = $base_url . 'sales/pdf_receipt/' . $sales->id;
+												$str2 .= '<li>
+															<a title="Pdf Receipt" class="pointer" target="_blank" href="' . $pdfReceiptUrl . '" >
+																<i class="fa fa-fw fa-money text-blue"></i> Pdf Receipt
+															</a>
+														  </li>';
+											}
 
 											if($this->permissions('sales_payment_add'))
 											$str2.='<li>
@@ -412,6 +429,8 @@ class Sales extends MY_Controller {
 			$row[] = $sales->reference_no;
 			$row[] = $sales->customer_name;
 			$row[] = $sales->phone;
+		
+			
 			$row[] = $sales->address;
 		
 			
@@ -674,7 +693,7 @@ class Sales extends MY_Controller {
 		}
 		else{
 			$this->load->library('Pdf');
-			$this->load->view('print-sales-quote',$data);
+			$this->load->view('print-sales-delivery',$data);
 	
 			// Output the PDF as a download
 			$this->load->view('print-sales-delivery','D');
@@ -778,6 +797,9 @@ public function pdf_receipt($sales_id) {
 	}
 	public function return_sales_list($sales_id){
 		echo $this->sales->return_sales_list($sales_id);
+	}
+	public function return_sales_quote_list($sales_id){
+		echo $this->sales_quote->return_sales_list($sales_id);
 	}
 	public function delete_payment(){
 		$this->permission_check_with_msg('sales_payment_delete');

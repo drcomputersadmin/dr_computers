@@ -564,7 +564,7 @@ class Sales_quote_model extends CI_Model {
 	}
 	/* For Purchase Items List Retrieve*/
 	public function return_sales_list($sales_id){
-		$q1=$this->db->select('*')->from('db_salesitems')->where("sales_id=$sales_id")->get();
+		$q1=$this->db->select('*')->from('db_quoteitems')->where("sales_id=$sales_id")->get();
 		$rowcount =1;
 		foreach ($q1->result() as $res1) {
 			$q2=$this->db->query("select * from db_items where id=".$res1->item_id);

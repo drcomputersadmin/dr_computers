@@ -387,12 +387,25 @@ function multi_delete(){
   //e.preventDefault
 }
 
+// function pay_now(sales_id){
+//   $.post('sales/show_pay_now_modal', {sales_id: sales_id}, function(result) {
+  
+//       $(".add_note_modal").html('').html(result);
+//       $('#add_note_modal').modal('toggle');
+    
+
+//   });
+// }
 function pay_now(sales_id){
   $.post('sales/show_pay_now_modal', {sales_id: sales_id}, function(result) {
-  
-      $(".add_note_modal").html('').html(result);
-      $('#add_note_modal').modal('toggle');
-    
+    $(".pay_now_modal").html('').html(result);
+    //Date picker
+    $('.datepicker').datepicker({
+      autoclose: true,
+    format: 'dd-mm-yyyy',
+     todayHighlight: true
+    });
+    $('#pay_now').modal('toggle');
 
   });
 }

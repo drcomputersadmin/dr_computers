@@ -398,8 +398,10 @@ class Sales_delivery_model extends CI_Model {
 	
 	public function show_add_note_modal($sales_id){
 		
+		$q1 = $this->db->select('delivery_note')->from('db_delivery_notes')->where('id', $sales_id)->get()->row();
+$delivery_note = $q1 ? $q1->delivery_note : ''; 
 
-		
+
 		?>
 	<div class="modal fade" id="add_note_model">
 		  <div class="modal-dialog ">
@@ -424,7 +426,8 @@ class Sales_delivery_model extends CI_Model {
 		               <div class="col-md-12">
 		                  <div class="">
 		                    <label for="payment_note"> Note</label>
-		                    <textarea type="text" class="form-control" id="note" name="note" placeholder="" ></textarea>
+							<textarea class="form-control" id="note" name="note" placeholder=""><?php echo htmlspecialchars($delivery_note); ?></textarea>
+
 		                    <span id="note_msg" style="display:none" class="text-danger"></span>
 		                  </div>
 		               </div>

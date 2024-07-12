@@ -564,3 +564,6 @@ $lang['delivery_address']	=		'Delivery Address';
 $lang['delivery_note'			]	=		'Delivery Note';
 $lang['delivery'			]	=		'Delivery Note';
 $lang['add_item'					]	=		'Add Item';
+
+$lang['invoice_status'					]	=		'Invoice Status';
+

@@ -227,7 +227,7 @@
                   </th>
                   <th><?= $this->lang->line('sales_date'); ?></th>
                   <th><?= $this->lang->line('sales_code'); ?></th>
-                  <th><?= $this->lang->line('sales_status'); ?></th>
+                  <!-- <th><?= $this->lang->line('sales_status'); ?></th> -->
                   <th><?= $this->lang->line('reference_no'); ?></th>
                   <th><?= $this->lang->line('customer_name'); ?></th>
                   <!-- <th>Warehouse</th> -->
@@ -235,7 +235,9 @@
                   <th><?= $this->lang->line('paid_amount'); ?></th>
                   <th><?= $this->lang->line('due'); ?></th>
                   <th><?= $this->lang->line('payment_status'); ?></th>
+
                   <th><?= $this->lang->line('created_by'); ?></th>
+                  <th><?= $this->lang->line('invoice_status'); ?></th>
                   <th><?= $this->lang->line('action'); ?></th>
                 </tr>
                 </thead>
@@ -245,12 +247,8 @@
                <tfoot>
                   <tr class="bg-gray">
                       <th colspan="6" style="text-align:right">Total</th><!-- 6 -->
-                      <th></th><!-- 7 -->
-                      <th></th><!-- 8 -->
-                      <th></th><!-- 8 -->
-                      <th></th><!-- 7 -->
-                      <th></th><!-- 8 -->
-                      <th></th><!-- 8 -->
+                      <th colspan="6" style="text-align:left"></th><!-- 7 -->
+                     
                   </tr>
               </tfoot>
               </table>
@@ -363,39 +361,26 @@
         ],
         /*Start Footer Total*/
         "footerCallback": function ( row, data, start, end, display ) {
-            var api = this.api(), data;
-            // Remove the formatting to get integer data for summation
-            var intVal = function ( i ) {
-                return typeof i === 'string' ?
-                    i.replace(/[\$,]/g, '')*1 :
-                    typeof i === 'number' ?
-                        i : 0;
-            };
-            var total = api
-                .column( 6, { page: 'none'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            var paid = api
-                .column( 7, { page: 'none'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-            var due = api
-                .column( 8, { page: 'none'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
-           
-            //$( api.column( 0 ).footer() ).html('Total');
-            $( api.column( 6 ).footer() ).html(app_number_format(total));
-            $( api.column( 7 ).footer() ).html(app_number_format(paid));
-            $( api.column( 8 ).footer() ).html(app_number_format(due));
-           
-        },
+    var api = this.api(), data;
+    // Remove the formatting to get integer data for summation
+    var intVal = function ( i ) {
+        return typeof i === 'string' ?
+            i.replace(/[\$,]/g, '')*1 :
+            typeof i === 'number' ?
+                i : 0;
+    };
+    var total = api
+        .column( 6, { page: 'none'} )
+        .data()
+        .reduce( function (a, b) {
+            return intVal(a) + intVal(b);
+        }, 0 );
+  
+   
+    // Update the footer cells with the calculated sums
+    $( api.column( 6 ).footer() ).html(app_number_format(total));
+   
+},
         /*End Footer Total*/
     });
     new $.fn.dataTable.FixedHeader( table );

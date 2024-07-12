@@ -64,7 +64,7 @@
                   <?php if ($CI->permissions('sales_add')) {?>
                   <div class="box-tools">
                 <a class="btn btn-block btn-info" href="<?php echo $base_url; ?>sales/addQuotation">
-                <i class="fa fa-plus"></i> <?=$this->lang->line('new_sales');?></a>
+                <i class="fa fa-plus"></i> <?=$this->lang->line('new_delivery');?></a>
               </div>
                  <?php }?>
                 </div>
@@ -172,6 +172,7 @@
                   <th><?= $this->lang->line('customer_name'); ?></th>
                   <!-- <th>Warehouse</th> -->
                   <th><?= $this->lang->line('customer_phone'); ?></th>
+                
                   <th><?= $this->lang->line('delivery_address'); ?></th>
                  
                 
@@ -240,11 +241,11 @@
                     multi_delete();
                 }
             },
-            { extend: 'copy', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9,10]} },
-            { extend: 'excel', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9,10]} },
-            { extend: 'pdf', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9,10]} },
-            { extend: 'print', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9,10]} },
-            { extend: 'csv', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9,10]} },
+            { extend: 'copy', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
+            { extend: 'excel', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
+            { extend: 'pdf', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
+            { extend: 'print', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
+            { extend: 'csv', className: 'btn bg-teal color-palette btn-flat',exportOptions: { columns: [1,2,3,4,5,6,7,8,9]} },
             { extend: 'colvis', className: 'btn bg-teal color-palette btn-flat',text:'Columns' },  
 
             ]
